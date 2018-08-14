@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+
+  <div *ngIf="!logger" padding>
+    <button ion-button block (click)="register()">Register</button>
+    <button ion-button block (click)="login()" class="login">Login</button>
+  </div>
+
+
+  <div *ngIf="logger" padding>
+
+    <ion-card>
+      <ion-card-header>
+        Details
+      </ion-card-header>
+
+      <ion-list>
+        <button ion-item>
+          <ion-icon name="person" item-start></ion-icon>
+          {{logger.name}}
+        </button>
+
+        <button ion-item>
+          <ion-icon name="mail" item-start></ion-icon>
+          {{logger.email}}
+        </button>
+
+      </ion-list>
+    </ion-card>
+
+
+    <div padding>
+      <button ion-button (click)="logout()" color="danger" block>Logout</button>
+    </div>
+  </div>
+
+
+
+
+</ion-content>

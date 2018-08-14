@@ -8,8 +8,8 @@ export class Items {
 
   constructor(public api: Api) { }
 
-  query(params?: any) {
-    return this.api.get('/items', params);
+  getCategories(type) {
+    return this.api.get(`category_list?type=${type}`);
   }
 
   add(item: Item) {

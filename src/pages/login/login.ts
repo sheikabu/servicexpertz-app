@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, NavParams, LoadingController } from 'ionic-angular';
 
 import { User } from '../../providers';
 import { MainPage } from '../';
@@ -11,12 +11,9 @@ import { MainPage } from '../';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  // The account fields for the login form.
-  // If you're using the username field with or without email, make
-  // sure to add it to the type
   account: { email: string, password: string } = {
-    email: 'test@example.com',
-    password: 'test'
+    email: '',
+    password: ''
   };
 
   // Our translated text strings
@@ -24,8 +21,11 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController,
     public user: User,
+    public navParams: NavParams,
     public toastCtrl: ToastController,
-    public translateService: TranslateService) {
+    public translateService: TranslateService,
+    public loadingCtrl: LoadingController
+  ) {
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
@@ -34,17 +34,52 @@ export class LoginPage {
 
   // Attempt to login in through our User service
   doLogin() {
-    this.user.login(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
+    let loading = this.loadingCtrl.create({
+      content: 'Logging In...'
+    });
+    loading.present();
+    this.user.login(this.account).subscribe((resp: any) => {
+      loading.dismiss();
+      if (resp.code === 1001) {
+        this.user._loggedIn({
+          'name': 'The name',
+          'email': 'theemailaddress@gmail.com'
+        });
+        this.user._setTokens(resp.token, resp.refresh_token);
+        this.navParams.get("parentPage").refresh()
+        this.navCtrl.pop();
+      } else {
+        let toast = this.toastCtrl.create({
+          message: resp.message,
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+      }
     }, (err) => {
-      this.navCtrl.push(MainPage);
-      // Unable to log in
+      loading.dismiss();
       let toast = this.toastCtrl.create({
-        message: this.loginErrorString,
+        message: err.error.message,
         duration: 3000,
         position: 'top'
       });
       toast.present();
     });
   }
+
+  // doLogin() {
+  //   let toast = this.toastCtrl.create({
+  //     message: "Logged in successfully",
+  //     duration: 3000,
+  //     position: 'top'
+  //   });
+  //   toast.present();
+  //   console.log(this.navParams);
+  //   this.user._loggedIn({
+  //     'name': 'S Vinesh',
+  //     'email': 'svinesh3691@gmail.com'
+  //   });
+  //   this.navParams.get("parentPage").refresh()
+  //   this.navCtrl.pop();
+  // }
 }

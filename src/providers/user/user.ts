@@ -25,8 +25,11 @@ import { Api } from '../api/api';
  */
 @Injectable()
 export class User {
-  _user: any;
-
+  // _user: any;
+  // _user: any;
+  _localStorage: any = {
+    'userDetails': null
+  };
   constructor(public api: Api) { }
 
   /**
@@ -53,10 +56,11 @@ export class User {
    * Send a POST request to our signup endpoint with the data
    * the user entered on the form.
    */
-  signup(accountInfo: any) {
-    let seq = this.api.post('signup', accountInfo).share();
+  register(accountInfo: any) {
+    let seq = this.api.post('user/create', accountInfo).share();
 
     seq.subscribe((res: any) => {
+      console.log(res);
       // If the API returned a successful response, mark the user as logged in
       if (res.status == 'success') {
         this._loggedIn(res);
@@ -72,13 +76,22 @@ export class User {
    * Log the user out, which forgets the session
    */
   logout() {
-    this._user = null;
+    this._localStorage.userDetails = null;
   }
 
   /**
    * Process a login/signup response to store user data
    */
   _loggedIn(resp) {
-    this._user = resp.user;
+    this._localStorage.userDetails = JSON.stringify(resp);
+  }
+
+  _setTokens(t, r) {
+    this._localStorage.t = t;
+    this._localStorage.r = r;
+  }
+
+  logger() {
+    return JSON.parse(this._localStorage.userDetails);
   }
 }
