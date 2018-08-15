@@ -35,8 +35,10 @@ export class ListMasterPage {
       content: 'Loading...'
     });
     loading.present();
-    this.itemSerRef.getCategories(this.type).subscribe((res) => {
-      this.cats = res;
+    this.itemSerRef.getCategories(this.type).subscribe((res:any) => {
+      if (res.code !== 1002) {
+        this.cats = res;
+      }
       loading.dismiss();
     }, (err) => {
       console.log(err);
