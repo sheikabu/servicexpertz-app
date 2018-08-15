@@ -31,7 +31,30 @@ export class RegisterPage {
   }
 
   save() {
+
+
+
     let payload = this.account;
+    if (!payload.name || !payload.email || !payload.password) {
+      let toast = this.toastCtrl.create({
+        message: 'Please fill all the fields!',
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+      return false;
+    }
+
+    if (payload.password !== payload.confpass ) {
+      let toast = this.toastCtrl.create({
+        message: 'Passwords doesnot match!',
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+      return false;
+    }
+
     delete this.account.confpass;
 
     let loading = this.loadingCtrl.create({

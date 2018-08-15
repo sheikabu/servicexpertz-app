@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, NavParams, LoadingController } from 'ionic-angular';
@@ -34,6 +35,16 @@ export class LoginPage {
 
   // Attempt to login in through our User service
   doLogin() {
+    if (!this.account.email || !this.account.password) {
+      let toast = this.toastCtrl.create({
+        message: 'Email & password fields are required!',
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+      return false;
+    }
+
     let loading = this.loadingCtrl.create({
       content: 'Logging In...'
     });
@@ -67,6 +78,12 @@ export class LoginPage {
     });
   }
 
+
+  toRegister() {
+    this.navCtrl.push('RegisterPage').then(() => {
+      this.navCtrl.remove(this.navCtrl.getPrevious().index);
+    });
+  }
   // doLogin() {
   //   let toast = this.toastCtrl.create({
   //     message: "Logged in successfully",

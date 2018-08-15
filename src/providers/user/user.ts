@@ -3,6 +3,7 @@ import 'rxjs/add/operator/toPromise';
 import { Injectable } from '@angular/core';
 
 import { Api } from '../api/api';
+import { Storage } from '@ionic/storage';
 
 /**
  * Most apps have the concept of a User. This is a simple provider
@@ -30,7 +31,7 @@ export class User {
   _localStorage: any = {
     'userDetails': null
   };
-  constructor(public api: Api) { }
+  constructor(public api: Api, public storage: Storage) { }
 
   /**
    * Send a POST request to our login endpoint with the data
@@ -83,15 +84,19 @@ export class User {
    * Process a login/signup response to store user data
    */
   _loggedIn(resp) {
-    this._localStorage.userDetails = JSON.stringify(resp);
+    // this._localStorage.userDetails = JSON.stringify(resp);
+    this.storage.set('userDetails', JSON.stringify(resp));
   }
 
   _setTokens(t, r) {
-    this._localStorage.t = t;
-    this._localStorage.r = r;
+    this.storage.set('t', t);
+    this.storage.set('r', r);
+    // this._localStorage.t = t;
+    // this._localStorage.r = r;
   }
 
   logger() {
-    return JSON.parse(this._localStorage.userDetails);
+    // return JSON.parse(this._localStorage.userDetails);
+    return this.storage.get('userDetails');
   }
 }
