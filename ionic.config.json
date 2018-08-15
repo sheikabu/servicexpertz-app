@@ -1,5 +1,7 @@
 {
   "name": "ServicExpertz",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

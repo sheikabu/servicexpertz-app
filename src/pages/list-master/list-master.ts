@@ -55,4 +55,8 @@ export class ListMasterPage {
       item: item
     });
   }
+
+  toProfile() {
+    this.navCtrl.push('ProfilePage');
+  }
 }

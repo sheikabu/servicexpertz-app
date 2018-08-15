@@ -26,13 +26,25 @@ export class ProfilePage {
     public toastCtrl: ToastController,
 
   ) {
-    this.logger = this.userSerRef.logger();
-    console.log(this.logger);
+    this.userSerRef.logger().then((res) => {
+      console.log(res);
+      if (res) {
+        this.logger = JSON.parse(res);
+      } else {
+        this.logger = res;
+      }
+    });
   }
 
   refresh() {
-    this.logger = this.userSerRef.logger();
-    console.log(this.logger);
+    this.userSerRef.logger().then((res) => {
+      console.log(res);
+      if (res) {
+        this.logger = JSON.parse(res);
+      } else {
+        this.logger = res;
+      }
+    });
   }
 
   ionViewDidLoad() {
@@ -49,14 +61,15 @@ export class ProfilePage {
 
   logout() {
     this.userSerRef.logout();
-    this.refresh();
+    // this.refresh();
+    this.logger = null;
     let toast = this.toastCtrl.create({
       message: 'Logged out successfuly',
       duration: 3000,
       position: 'top'
     });
     toast.present();
-    this.navCtrl.parent.select(0);
+    // this.navCtrl.parent.select(0);
 
   }
 
