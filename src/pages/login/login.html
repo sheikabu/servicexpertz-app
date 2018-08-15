@@ -75,16 +75,14 @@
           <ion-row>
             <ion-col class="signup-col">
                 <div class="text-center">
-                    <button ion-button block>{{ 'LOGIN_BUTTON' | translate }}</button>
+                    <button ion-button block>Login</button>
                   </div>
             </ion-col>
           </ion-row>
           <ion-row class="text-center">
               <ion-col class="signup-col">
                   <div padding-horizontal>
-                      Not an account? 
-                      <button class="register-btn link-btn" block clear (click)="signup()">{{ 'SIGNUP' | translate }}</button>
- 
+                      Don`t have an account? <button type="button" class="register-btn link-btn" block clear (click)="toRegister()">Register</button>
                     </div>
               </ion-col>
             </ion-row>
