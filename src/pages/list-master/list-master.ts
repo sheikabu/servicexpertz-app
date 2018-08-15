@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, NavController } from 'ionic-angular';
+import { IonicPage, ModalController, NavController, LoadingController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
-import { Items } from '../../providers';
+import { Items } from '../../providers/items/items';
 
 @IonicPage()
 @Component({
@@ -11,9 +11,17 @@ import { Items } from '../../providers';
 })
 export class ListMasterPage {
   currentItems: Item[];
+  type: any = '1';
+  cats: ArrayBuffer;
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
-    this.currentItems = this.items.query();
+  constructor(
+    public navCtrl: NavController,
+    public itemSerRef: Items,
+    public modalCtrl: ModalController,
+    public loadingCtrl: LoadingController
+  ) {
+    // this.currentItems = this.items.query();
+    this.getCategories();
   }
 
   /**
@@ -22,25 +30,21 @@ export class ListMasterPage {
   ionViewDidLoad() {
   }
 
-  /**
-   * Prompt the user to add a new item. This shows our ItemCreatePage in a
-   * modal and then adds the new item to our data source if the user created one.
-   */
-  addItem() {
-    let addModal = this.modalCtrl.create('ItemCreatePage');
-    addModal.onDidDismiss(item => {
-      if (item) {
-        this.items.add(item);
-      }
+  getCategories() {
+    let loading = this.loadingCtrl.create({
+      content: 'Loading...'
+    });
+    loading.present();
+    this.itemSerRef.getCategories(this.type).subscribe((res) => {
+      this.cats = res;
+      loading.dismiss();
+    }, (err) => {
+      console.log(err);
     })
-    addModal.present();
   }
 
-  /**
-   * Delete an item from the list of items.
-   */
-  deleteItem(item) {
-    this.items.delete(item);
+  changeCategory() {
+    this.getCategories();
   }
 
   /**
@@ -50,5 +54,9 @@ export class ListMasterPage {
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });
+  }
+
+  toProfile() {
+    this.navCtrl.push('ProfilePage');
   }
 }

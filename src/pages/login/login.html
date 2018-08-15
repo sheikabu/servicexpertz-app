@@ -1,39 +1,83 @@
-<ion-header>
+<!-- <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
+    <ion-title>Login</ion-title>
   </ion-navbar>
 
-</ion-header>
+</ion-header> -->
 
 
-<ion-content>
+<ion-content class="login-page" padding>
+  <div class="circle"></div>
   <form (submit)="doLogin()">
-    <ion-list>
+    <!-- <ion-list>
 
       <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-label>{{ 'EMAIL' | translate }}</ion-label>
         <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
       </ion-item>
 
-      <!--
+      
       Want to use a Username instead of an Email? Here you go:
 
       <ion-item>
         <ion-label floating>{{ 'USERNAME' | translate }}</ion-label>
         <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
       </ion-item>
-      -->
+     
 
       <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
       </ion-item>
 
       <div padding>
-        <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
+        <button ion-button color="primary" block>Login</button>
       </div>
 
-    </ion-list>
+    </ion-list> -->
+    <ion-row class="logo-row text-center">
+        <ion-col width-67>
+          <div class="logo">
+          <img src="../assets/imgs/logo-1.png"/>
+        </div>
+        </ion-col>
+      </ion-row>
+      <div class="login-box">
+        <form (submit)="doLogin()">
+          <ion-row>
+            <ion-col>
+              <ion-list inset>
+                
+                <ion-item>
+                    <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+                  
+                </ion-item>
+                
+                <ion-item>
+                    <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+                </ion-item>
+                
+              </ion-list>
+            </ion-col>
+          </ion-row>
+          
+          <ion-row>
+            <ion-col class="signup-col">
+                <div padding class="text-center">
+                    <button ion-button color="primary">Login</button>
+                  </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col class="signup-col">
+                  <div padding-horizontal>
+                      Don`t have an account? <button type="button" (click)="toRegister()">Register</button>
+                    </div>
+              </ion-col>
+            </ion-row>
+          
+        </form>
+      </div>
   </form>
 </ion-content>
