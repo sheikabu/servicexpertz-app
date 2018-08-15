@@ -95,4 +95,11 @@ export class RegisterPage {
       toast.present();
     });
   }
+
+
+  toLogin() {
+    this.navCtrl.push('LoginPage').then(() => {
+      this.navCtrl.remove(this.navCtrl.getPrevious().index);
+    });
+  }
 }
