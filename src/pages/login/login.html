@@ -7,9 +7,9 @@
 </ion-header> -->
 
 
-<ion-content class="login-page" padding>
+<ion-content class="login-page" >
+  <div class="page-content" padding>
   <div class="circle"></div>
-  <form (submit)="doLogin()">
     <!-- <ion-list>
 
       <ion-item>
@@ -47,37 +47,60 @@
         <form (submit)="doLogin()">
           <ion-row>
             <ion-col>
-              <ion-list inset>
+              <ion-list>
                 
-                <ion-item>
-                    <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+                <ion-item class="mb-10">
+                    <ion-icon name="ios-person" item-left primary></ion-icon>
+                    <ion-input type="email" placeholder="Enter Email" [(ngModel)]="account.email" name="email"></ion-input>
                   
                 </ion-item>
                 
                 <ion-item>
-                    <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+                    <ion-icon name="md-lock" item-left primary></ion-icon>
+                    <ion-input type="password" placeholder="Enter Password" [(ngModel)]="account.password" name="password"></ion-input>
                 </ion-item>
                 
               </ion-list>
             </ion-col>
           </ion-row>
+          <ion-row class="text-right">
+              <ion-col class="signup-col">
+                  <div padding-horizontal>
+                      <button class="forgot-btn link-btn" block clear (click)="signup()">Forgot Password</button>
+ 
+                    </div>
+              </ion-col>
+            </ion-row>
           
           <ion-row>
             <ion-col class="signup-col">
-                <div padding class="text-center">
-                    <button ion-button color="primary">Login</button>
+                <div class="text-center">
+                    <button ion-button block>Login</button>
                   </div>
             </ion-col>
           </ion-row>
-          <ion-row>
+          <ion-row class="text-center">
               <ion-col class="signup-col">
                   <div padding-horizontal>
-                      Don`t have an account? <button type="button" (click)="toRegister()">Register</button>
+                      Don`t have an account? <button type="button" class="register-btn link-btn" block clear (click)="toRegister()">Register</button>
                     </div>
               </ion-col>
             </ion-row>
           
         </form>
+        
       </div>
-  </form>
+      <div class="ion-row text-center mt-20">
+          <div class="col">
+              <button ion-button round outline>
+                  <ion-icon name="logo-facebook" class="facebook"></ion-icon>
+                  Sign In with Facebook
+              </button>
+              <button ion-button round outline>
+                  <ion-icon name="logo-google" class="google"></ion-icon>
+                  Sign In with Google
+              </button>
+          </div>
+        </div>
+</div>
 </ion-content>
