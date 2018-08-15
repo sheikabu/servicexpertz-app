@@ -14,3 +14,58 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+.button{
+    background-color: none;
+}
+.text-center{
+    text-align: center;
+}
+.text-right{
+    text-align: right;
+}
+.mt-10{
+    margin-top: 10px;
+}
+.mt-20{
+    margin-top: 20px;
+}
+.mt-30{
+    margin-top: 30px;
+}
+.mb-10{
+    margin-bottom: 10px;
+}
+.button-default{
+    border-radius: 20px;
+    background: linear-gradient(-95deg, #41A7DA, #F1B02E) fixed;
+}
+.button-outline{
+    border-color: #ddd;
+    color: #333;
+}
+.button-outline ion-icon{
+    margin-right: 10px;
+}
+.button-outline ion-icon.facebook{
+    color: #3F68DE;
+}
+.button-outline ion-icon.google{
+    color: #D84F41;
+}
+
+
+
+
+
+
+   ion-item {
+       border-radius: 30px !important;
+       padding-left: 10px !important;
+       font-size: 0.9em;
+    //    margin-bottom: 15px !important;
+       border: 1px solid #D8D8D8 !important;
+       box-shadow: none !important;
+       background-color: #FCF9F5 !important;
+   }
