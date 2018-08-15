@@ -18,28 +18,40 @@
             </ion-col>
           </ion-row>
           <div class="login-box">
+              <ion-row class="text-center">
+                  <ion-col class="signup-col">
+                      <div padding-horizontal>
+                          <h3 class="auth-head">Register</h3>
+     
+                        </div>
+                  </ion-col>
+                </ion-row>
   <form (submit)="save()">
     <ion-list>
 
       <ion-item class="mb-10">
+          <ion-icon name="ios-person" item-left primary></ion-icon>
         <ion-input type="text" [(ngModel)]="account.name" name="name" placeholder="Name"></ion-input>
       </ion-item>
 
       <ion-item class="mb-10">
+          <ion-icon name="ios-mail" item-left primary></ion-icon>
         <ion-input type="email" [(ngModel)]="account.email" name="email" placeholder="Email"></ion-input>
       </ion-item>
 
 
       <ion-item class="mb-10">
+          <ion-icon name="md-lock" item-left primary></ion-icon>
         <ion-input type="password" [(ngModel)]="account.password" name="password" placeholder="Password"></ion-input>
       </ion-item>
 
       <ion-item>
+          <ion-icon name="md-lock" item-left primary></ion-icon>
         <ion-input type="password" [(ngModel)]="account.confpass" name="password" placeholder="Re-type Password"></ion-input>
       </ion-item>
 
       <div padding>
-        <button ion-button color="primary" block>Register</button>
+        <button ion-button color="secondary" block>Register</button>
       </div>
       <ion-row class="text-center">
           <ion-col class="signup-col">

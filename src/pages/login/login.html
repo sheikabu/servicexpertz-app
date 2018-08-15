@@ -44,6 +44,14 @@
         </ion-col>
       </ion-row>
       <div class="login-box">
+          <ion-row class="text-center">
+              <ion-col class="signup-col">
+                  <div padding-horizontal>
+                      <h3 class="auth-head">Login</h3>
+ 
+                    </div>
+              </ion-col>
+            </ion-row>
         <form (submit)="doLogin()">
           <ion-row>
             <ion-col>
@@ -75,7 +83,7 @@
           <ion-row>
             <ion-col class="signup-col">
                 <div class="text-center">
-                    <button ion-button block>Login</button>
+                    <button ion-button block color="secondary">Login</button>
                   </div>
             </ion-col>
           </ion-row>
@@ -92,11 +100,11 @@
       </div>
       <div class="ion-row text-center mt-20">
           <div class="col">
-              <button ion-button round outline>
+              <button ion-button round outline class="social-buttons">
                   <ion-icon name="logo-facebook" class="facebook"></ion-icon>
                   Sign In with Facebook
               </button>
-              <button ion-button round outline>
+              <button ion-button round outline class="social-buttons">
                   <ion-icon name="logo-google" class="google"></ion-icon>
                   Sign In with Google
               </button>
