@@ -1,0 +1,41 @@
+<ion-menu [content]="content">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list>
+            <!-- <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                {{p.title}}
+            </button> -->
+            <button menuClose ion-item (click)="openPage('ListMasterPage')">
+                Home
+            </button>
+            <button menuClose ion-item (click)="openPage('HistoryPage')">
+                Histoy
+            </button>
+            <button menuClose ion-item (click)="openPage('FeedbackPage')">
+                Feedback
+            </button>
+            <button menuClose ion-item (click)="openPage('TermsPage')">
+                Terms
+            </button>
+            <button *ngIf="!user" menuClose ion-item (click)="openPage('LoginPage')">
+                Login
+            </button>
+            <button *ngIf="!user" menuClose ion-item (click)="openPage('RegisterPage')">
+                Register
+            </button>
+            <button *ngIf="user" menuClose ion-item (click)="openPage('ProfilePage')">
+                Profile
+            </button>
+            <button *ngIf="user" menuClose ion-item (click)="logOut()">
+                Logout
+            </button>
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+<ion-nav #content [root]="rootPage"></ion-nav>

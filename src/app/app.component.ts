@@ -2,10 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { Config, Nav, Platform } from 'ionic-angular';
+import { Config, Nav, Platform, ToastController } from 'ionic-angular';
 
 import { FirstRunPage, MainPage } from '../pages';
-import { Settings } from '../providers';
+import { Settings, User } from '../providers';
 
 // <ion-menu [content]="content">
 //   <ion-header>
@@ -26,25 +26,7 @@ import { Settings } from '../providers';
 
 
 @Component({
-  template: `
-
-  <ion-menu [content]="content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-  
-    <ion-content>
-      <ion-list>
-        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}}
-        </button>
-      </ion-list>
-    </ion-content>
-  
-  </ion-menu>
-  <ion-nav #content [root]="rootPage"></ion-nav>`
+  templateUrl: `app.component.html`
 })
 export class MyApp {
   rootPage;
@@ -65,17 +47,27 @@ export class MyApp {
   //   { title: 'Settings', component: 'SettingsPage' },
   //   { title: 'Search', component: 'SearchPage' }
   // ];
-  pages : any [] = [
+  pages: any[] = [
+    { title: 'Categories', component: 'ListMasterPage' },
     { title: 'My Profile', component: 'ProfilePage' },
     { title: 'History', component: 'HistoryPage' },
     { title: 'Feedback', component: 'FeedbackPage' },
     { title: 'Terms & Conditions', component: 'TermsPage' },
     { title: 'Contact', component: 'ContactPage' }
   ];
+  user: any;
 
 
 
-  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(
+    private translate: TranslateService,
+    platform: Platform, settings: Settings,
+    private config: Config,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen,
+    private userSerRef: User,
+    private toastCtrl: ToastController
+  ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -84,6 +76,10 @@ export class MyApp {
     });
     this.initTranslate();
     this.rootPage = MainPage;
+    this.userSerRef.logger().subscribe((user) => {
+      this.user = user;
+      console.log('User changed', this.user);
+    });
   }
 
   initTranslate() {
@@ -113,8 +109,29 @@ export class MyApp {
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    console.log(typeof page)
+    if (typeof page === 'string') {
+      if (page === 'LoginPage' || page === 'RegisterPage') {
+        console.log(page, 'pushed');
+        this.nav.push(page);
+      } else {
+        this.nav.setRoot(page);
+      }
+    } else {
+      this.nav.setRoot(page.component);
+    }
+  }
+
+  logOut() {
+    this.userSerRef.logout();
+
+    let toast = this.toastCtrl.create({
+      message: "Logged out successfully",
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
+    this.nav.setRoot('ListMasterPage');
+
   }
 }

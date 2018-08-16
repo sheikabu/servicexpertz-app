@@ -26,24 +26,8 @@ export class ProfilePage {
     public toastCtrl: ToastController,
 
   ) {
-    this.userSerRef.logger().then((res) => {
-      console.log(res);
-      if (res) {
-        this.logger = JSON.parse(res);
-      } else {
-        this.logger = res;
-      }
-    });
-  }
-
-  refresh() {
-    this.userSerRef.logger().then((res) => {
-      console.log(res);
-      if (res) {
-        this.logger = JSON.parse(res);
-      } else {
-        this.logger = res;
-      }
+    this.userSerRef.logger().subscribe((res) => {
+      this.logger = res;
     });
   }
 
@@ -61,7 +45,6 @@ export class ProfilePage {
 
   logout() {
     this.userSerRef.logout();
-    // this.refresh();
     this.logger = null;
     let toast = this.toastCtrl.create({
       message: 'Logged out successfuly',
@@ -69,8 +52,7 @@ export class ProfilePage {
       position: 'top'
     });
     toast.present();
-    // this.navCtrl.parent.select(0);
-
+    this.navCtrl.pop();
   }
 
   register() {
