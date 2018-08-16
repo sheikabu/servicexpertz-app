@@ -1,9 +1,13 @@
-import 'rxjs/add/operator/toPromise';
 
 import { Injectable } from '@angular/core';
 
 import { Api } from '../api/api';
 import { Storage } from '@ionic/storage';
+import { Observable } from 'rxjs/Observable';
+// import { from } from 'rxjs';
+import { fromPromise } from 'rxjs/observable/fromPromise';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/toPromise';
 
 /**
  * Most apps have the concept of a User. This is a simple provider
@@ -26,24 +30,21 @@ import { Storage } from '@ionic/storage';
  */
 @Injectable()
 export class User {
-  // _user: any;
-  // _user: any;
-  _localStorage: any = {
-    'userDetails': null
-  };
-  constructor(public api: Api, public storage: Storage) { }
 
-  /**
-   * Send a POST request to our login endpoint with the data
-   * the user entered on the form.
-   */
+  private loggerSubject: BehaviorSubject<any> = new BehaviorSubject<any>(false);
+
+  constructor(public api: Api, public storage: Storage) {
+    this.storage.get('userDetails').then((resp) => {
+      this.loggerSubject.next(JSON.parse(resp));
+    })
+  }
+
   login(accountInfo: any) {
     let seq = this.api.post('login', accountInfo).share();
 
     seq.subscribe((res: any) => {
-      // If the API returned a successful response, mark the user as logged in
       if (res.status == 'success') {
-        this._loggedIn(res);
+        this.loggedIn(res);
       } else {
       }
     }, err => {
@@ -53,10 +54,6 @@ export class User {
     return seq;
   }
 
-  /**
-   * Send a POST request to our signup endpoint with the data
-   * the user entered on the form.
-   */
   register(accountInfo: any) {
     let seq = this.api.post('user/create', accountInfo).share();
 
@@ -64,7 +61,7 @@ export class User {
       console.log(res);
       // If the API returned a successful response, mark the user as logged in
       if (res.status == 'success') {
-        this._loggedIn(res);
+        this.loggedIn(res);
       }
     }, err => {
       console.error('ERROR', err);
@@ -73,30 +70,38 @@ export class User {
     return seq;
   }
 
-  /**
-   * Log the user out, which forgets the session
-   */
   logout() {
-    this._localStorage.userDetails = null;
+    this.storage.set('userDetails', false);
+    this.storage.set('t', null);
+    this.storage.set('r', null);
+    this.loggerSubject.next(false);
+
   }
 
-  /**
-   * Process a login/signup response to store user data
-   */
-  _loggedIn(resp) {
-    // this._localStorage.userDetails = JSON.stringify(resp);
+  loggedIn(resp) {
     this.storage.set('userDetails', JSON.stringify(resp));
+    this.loggerSubject.next(resp);
+
   }
 
-  _setTokens(t, r) {
+  setTokens(t, r) {
     this.storage.set('t', t);
     this.storage.set('r', r);
-    // this._localStorage.t = t;
-    // this._localStorage.r = r;
+  }
+
+  getToken(): Promise<any> {
+    return this.storage.get('t').then(
+      data => { return data },
+      error => console.error(error)
+    )
+  }
+
+  getTokenAsObservable() {
+    return fromPromise(this.getToken());
   }
 
   logger() {
-    // return JSON.parse(this._localStorage.userDetails);
-    return this.storage.get('userDetails');
+    return this.loggerSubject.asObservable();
+    // return this.storage.get('userDetails');
   }
 }
