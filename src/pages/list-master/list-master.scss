@@ -1,3 +1,18 @@
 .landing-page .card .card-content .item{
     padding-left: 0;
 }
+.card{
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.4);
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+.card .item{
+    background-color: #f5f5f5;
+}
+.card h2{
+    font-size:14px;
+    font-weight: 700;
+}
+.card-content{
+    padding: 5px 12px;
+}

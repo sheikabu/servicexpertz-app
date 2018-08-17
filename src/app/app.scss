@@ -65,12 +65,12 @@
     max-height: 100%;
 }
 
-.item .icon{
-    font-size: 1.6em !important;
-    color: #979593 !important;
-    margin-right: 0 !important;
-    padding-top: 2px;
-}
+// .item .icon{
+//     font-size: 1.6em !important;
+//     color: #979593 !important;
+//     margin-right: 0 !important;
+//     padding-top: 2px;
+// }
 
 
 .link-btn {
@@ -162,7 +162,7 @@
 
 
 .header{
-    background: linear-gradient(-100deg, #41A7DA, #F1B02E) fixed;
+    background: linear-gradient(-100deg, #41A7DA, #F5CA70) fixed;
     .toolbar{
         text-align: center;
         color: #fff;
@@ -172,6 +172,7 @@
         .toolbar-title {
             color: #fff;
             text-align: left;
+            font-size: 15px;
         }
     }
     .toolbar-background{
@@ -186,6 +187,22 @@
 .segment .segment-button.segment-activated{
     color: #fff;
     border-width: 5px;
-    border-color: #e86b63;
+    border-color: #dcd18a;
+}
+
+/*--Menu---*/
+.menu-cover{
+    height: 150px;
+}
+.menu-list {
+    ion-icon{
+    color: #41A7DA;
+    margin-right: 10px;
+    font-size: 20px;
+    }
+    .menu-label{
+        font-size: 15px;
+        font-weight: 700;
+    }
 }
 
