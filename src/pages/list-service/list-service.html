@@ -1,40 +1,20 @@
 <ion-header>
 
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Categories</ion-title>
-
-    <ion-buttons end>
-      <button ion-button icon-only (click)="toProfile()">
-        <ion-icon name="ios-contact"></ion-icon>
-      </button>
-    </ion-buttons>
-
+    <ion-title>{{item && item.category}}</ion-title>
   </ion-navbar>
-
-
-  <ion-segment (click)="changeCategory()" [(ngModel)]="type">
-    <ion-segment-button value="1">
-      Residential
-    </ion-segment-button>
-    <ion-segment-button value="2">
-      Commercial
-    </ion-segment-button>
-  </ion-segment>
 </ion-header>
 
 <ion-content class="landing-page">
 
-  <ion-card  *ngFor="let a of cats">
+  <ion-card  *ngFor="let a of services">
 
   <ion-card-content>
-      <button ion-item (click)="openItem(a)">
+      <button ion-item (click)="bookItem(a)">
           <ion-avatar item-start>
             <img src="assets/img/queen-live.png" />
           </ion-avatar>
-          <h2>{{a.category}}</h2>
+          <h2>{{a.services}}</h2>
           <p>{{a.description}}</p>
         </button>
   </ion-card-content>

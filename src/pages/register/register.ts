@@ -79,7 +79,10 @@ export class RegisterPage {
           position: 'top'
         });
         toast.present();
-        this.navCtrl.pop();
+        this.navCtrl.push('LoginPage').then(() => {
+          this.navCtrl.remove(this.navCtrl.getPrevious().index);
+        });
+        // this.navCtrl.pop();
       }
     }, (err) => {
 

@@ -3,6 +3,7 @@ import { IonicPage, ModalController, NavController, LoadingController } from 'io
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers/items/items';
+import { User } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -13,15 +14,20 @@ export class ListMasterPage {
   currentItems: Item[];
   type: any = '1';
   cats: ArrayBuffer;
+  user: any;
 
   constructor(
     public navCtrl: NavController,
     public itemSerRef: Items,
     public modalCtrl: ModalController,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public userSerRef: User
   ) {
     // this.currentItems = this.items.query();
     this.getCategories();
+    this.userSerRef.logger().subscribe((user) => {
+      this.user = user;
+    });
   }
 
   /**
@@ -35,7 +41,7 @@ export class ListMasterPage {
       content: 'Loading...'
     });
     loading.present();
-    this.itemSerRef.getCategories(this.type).subscribe((res:any) => {
+    this.itemSerRef.getCategories(this.type).subscribe((res: any) => {
       if (res.code !== 1002) {
         this.cats = res;
       }
@@ -53,12 +59,19 @@ export class ListMasterPage {
    * Navigate to the detail page for this item.
    */
   openItem(item: Item) {
-    this.navCtrl.push('ItemDetailPage', {
-      item: item
+    // this.navCtrl.push('ItemDetailPage', {
+    //   item: item
+    // });
+    this.navCtrl.push('ListServicePage', {
+      item
     });
   }
 
   toProfile() {
-    this.navCtrl.push('ProfilePage');
+    if(this.user) {
+      this.navCtrl.push('ProfilePage');
+    } else {
+      this.navCtrl.push('LoginPage');
+    }
   }
 }

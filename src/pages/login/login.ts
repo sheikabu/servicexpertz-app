@@ -17,8 +17,10 @@ export class LoginPage {
     password: ''
   };
 
+
   // Our translated text strings
   private loginErrorString: string;
+  parentPage: any;
 
   constructor(public navCtrl: NavController,
     public user: User,
@@ -31,6 +33,8 @@ export class LoginPage {
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     })
+
+    this.parentPage = this.navParams.get("parentPage");
   }
 
   // Attempt to login in through our User service
@@ -52,12 +56,9 @@ export class LoginPage {
     this.user.login(this.account).subscribe((resp: any) => {
       loading.dismiss();
       if (resp.code === 1001) {
-        this.user._loggedIn({
-          'name': 'The name',
-          'email': 'theemailaddress@gmail.com'
-        });
-        this.user._setTokens(resp.token, resp.refresh_token);
-        this.navParams.get("parentPage").refresh()
+        this.user.loggedIn(resp.user_details);
+        this.user.setTokens(resp.token, resp.refresh_token);
+        // this.parentPage && this.parentPage.refreshFromLogin();
         this.navCtrl.pop();
       } else {
         let toast = this.toastCtrl.create({
@@ -84,19 +85,5 @@ export class LoginPage {
       this.navCtrl.remove(this.navCtrl.getPrevious().index);
     });
   }
-  // doLogin() {
-  //   let toast = this.toastCtrl.create({
-  //     message: "Logged in successfully",
-  //     duration: 3000,
-  //     position: 'top'
-  //   });
-  //   toast.present();
-  //   console.log(this.navParams);
-  //   this.user._loggedIn({
-  //     'name': 'S Vinesh',
-  //     'email': 'svinesh3691@gmail.com'
-  //   });
-  //   this.navParams.get("parentPage").refresh()
-  //   this.navCtrl.pop();
-  // }
+
 }
