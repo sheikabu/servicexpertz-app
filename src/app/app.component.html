@@ -1,38 +1,40 @@
 <ion-menu [content]="content">
-    <ion-header>
-        <ion-toolbar>
-            <ion-title>Menu</ion-title>
-        </ion-toolbar>
-    </ion-header>
+    
 
     <ion-content>
-        <ion-list>
+            <!-- <div class="menu-cover">
+                    <div class="justify-content-end">
+                        <h3>Visnesh</h3>
+                    </div>
+                </div> -->
+        <ion-list class="menu-list">
             <!-- <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
                 {{p.title}}
             </button> -->
+
             <button menuClose ion-item (click)="openPage('ListMasterPage')">
-                Home
+                    <ion-icon name="home"></ion-icon> <label class="menu-label">Home</label>
             </button>
             <button menuClose ion-item (click)="openPage('HistoryPage')">
-                Histoy
+                <ion-icon name="timer"></ion-icon> <label class="menu-label">Histoy</label>
             </button>
             <button menuClose ion-item (click)="openPage('FeedbackPage')">
-                Feedback
+                    <ion-icon ios="ios-thumbs-up" md="md-thumbs-up"></ion-icon> <label class="menu-label">Feedback</label>
             </button>
             <button menuClose ion-item (click)="openPage('TermsPage')">
-                Terms
+                    <ion-icon name="checkmark-circle"></ion-icon> <label class="menu-label">Terms and Conditions</label>
             </button>
             <button *ngIf="!user" menuClose ion-item (click)="openPage('LoginPage')">
-                Login
+                    <ion-icon ios="ios-log-in" md="md-log-in"></ion-icon>  <label class="menu-label">Login</label>
             </button>
             <button *ngIf="!user" menuClose ion-item (click)="openPage('RegisterPage')">
-                Register
+                    <ion-icon name="person-add"></ion-icon> <label class="menu-label">Register</label>
             </button>
             <button *ngIf="user" menuClose ion-item (click)="openPage('ProfilePage')">
-                Profile
+                    <ion-icon name="person"></ion-icon> <label class="menu-label">Profile</label>
             </button>
             <button *ngIf="user" menuClose ion-item (click)="logOut()">
-                Logout
+                    <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon> <label class="menu-label">Logout</label>
             </button>
         </ion-list>
     </ion-content>
