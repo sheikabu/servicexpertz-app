@@ -1,3 +1,28 @@
-page-book-service {
-
+.book-now-page{
+    .book-image{
+        height: 180px;
+        background-image: url(../../assets/img/menu-bg.jpg);
+        background-position: center left;
+        background-size: cover;
+        position: relative;
+    }
+    
+    .book-price{
+        font-size: 28px;
+        font-weight: 800;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        color: #41A7DA;
+    }
+    .service-head{
+        font-size: 18px;
+        font-weight: 700;
+        margin: 10px 0 !important;
+    }
+    .service-desc{
+        text-align: justify;
+    }
+    
 }
+
+
