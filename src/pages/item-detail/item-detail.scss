@@ -23,7 +23,8 @@
 // }
 
 
-.book-now-page{
+.item-details-page{
+    background-color: #f5f5f5;
   .book-image{
       height: 180px;
       background-image: url(../../assets/img/menu-bg.jpg);
@@ -35,7 +36,7 @@
   .book-price{
       font-size: 28px;
       font-weight: 800;
-      margin-top: 25px;
+      margin-top: 15px;
       margin-bottom: 15px;
       color: #f94118;
   }
@@ -43,11 +44,13 @@
       font-size: 18px;
       font-weight: 700;
       margin: 10px 0 !important;
+      color: #41A7DA;
   }
   .service-desc{
       text-align: justify;
   }
   .custom-checkbox { 
+      background-color: transparent;
       .input-wrapper{
           font-size: 14px;
       }
@@ -57,6 +60,16 @@
       .item-cover {
         width: 10%;
       }
+    }
+    .book-image-col{
+        padding: 0;
+    }
+
+    .item-detail-bg{
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 10px;        
+        box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
     }
   
 }

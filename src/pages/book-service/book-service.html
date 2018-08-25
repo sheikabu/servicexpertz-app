@@ -26,8 +26,11 @@
     </ion-col>
   </ion-row>
 
-  <ion-item>
-    <ion-label>Date</ion-label>
+  <ion-item class="date-picker">
+    <ion-label>
+        <ion-icon name="calendar"></ion-icon> 
+      Select Date
+    </ion-label>
     <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="date"></ion-datetime>
   </ion-item>
   <!-- 
@@ -38,7 +41,8 @@
       <ion-option value="evening">Evening</ion-option>
     </ion-select>
   </ion-item> -->
-
+  <div class="slot-selector mt-10">
+  <label>Choose Slot</label>
   <ion-list radio-group [(ngModel)]="slot">
     <ion-item>
       <ion-label>Morning</ion-label>
@@ -53,11 +57,18 @@
       <ion-radio value="enemies" [disabled]="isDisabled"></ion-radio>
     </ion-item>
   </ion-list>
+</div>
+
 </ion-content>
 <ion-footer>
-  <ion-toolbar>
-    <div class="text-center">
-      <button ion-button color="secondary">Book Now</button>
-    </div>
+  <ion-toolbar padding>
+      <ion-item no-lines no-padding class="custom-checkbox">
+          <ion-label>I agree
+            <a (click)="openTerms()">Terms and Conditions</a>
+          </ion-label>
+          <ion-checkbox name="agree" checked="true" required></ion-checkbox>
+        </ion-item>
+      
+      <button ion-button color="secondary" block class="">Book Now</button>
   </ion-toolbar>
 </ion-footer>
