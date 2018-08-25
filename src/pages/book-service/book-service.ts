@@ -15,11 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BookServicePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  item: any;
+
+  constructor(public navCtrl: NavController, navParams: NavParams) {
+    this.item = navParams.get('item');
+    console.log(this.item);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BookServicePage');
+  bookNow() {
+    
   }
 
 }
