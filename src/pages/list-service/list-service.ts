@@ -37,7 +37,10 @@ export class ListServicePage {
 
   bookItem(item) {
     if (this.user) {
-      this.navCtrl.push('BookServicePage', {
+      // this.navCtrl.push('BookServicePage', {
+      //   item
+      // });
+      this.navCtrl.push('ItemDetailPage', {
         item
       });
     } else {

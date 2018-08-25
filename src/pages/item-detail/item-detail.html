@@ -1,18 +1,38 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ item.name }}</ion-title>
+    <ion-title>{{ item.services }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+  <div class="item-profile" text-center #profilePic [style.background-image]="'url(../../assets/img/menu-bg.jpg)'">
+  </div>
+  <div class="item-detail" padding>
+    <h2>{{item.services}}</h2>
+    <p>{{item.description}} Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+      the industry's standard dummy text ever since the 1500.. when an unknown printer took a galley of type and scrambled
+      it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+      remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+      Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
+      Ipsum
+    </p>
+
+    <div class="book-price">
+      <span>₹​</span> 1582.00
+    </div>
   </div>
 
-  <div class="item-detail" padding>
-    <h2>{{item.name}}</h2>
-    <p>{{item.about}}</p>
-  </div>
+
 </ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="text-center">
+      <button ion-button (click)="bookNow()" color="secondary">Book Now</button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
