@@ -1,23 +1,64 @@
-page-item-detail {
-  .item-profile {
-    width: 100%;
-    background-position: center center;
-    background-size: cover;
-    height: 250px;
+// page-item-detail {
+//   .item-profile {
+//     width: 100%;
+//     background-position: center center;
+//     background-size: cover;
+//     height: 250px;
+//   }
+
+//   .item-detail {
+//     width: 100%;
+//     background: white;
+//     position: absolute;
+//   }
+
+
+//   .book-price{
+//     font-size: 28px;
+//     font-weight: 800;
+//     margin-top: 25px;
+//     margin-bottom: 15px;
+//     color: #f94118;
+//   }
+// }
+
+
+.book-now-page{
+  .book-image{
+      height: 180px;
+      background-image: url(../../assets/img/menu-bg.jpg);
+      background-position: center left;
+      background-size: cover;
+      position: relative;
   }
-
-  .item-detail {
-    width: 100%;
-    background: white;
-    position: absolute;
-  }
-
-
+  
   .book-price{
-    font-size: 28px;
-    font-weight: 800;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    color: #f94118;
+      font-size: 28px;
+      font-weight: 800;
+      margin-top: 25px;
+      margin-bottom: 15px;
+      color: #f94118;
   }
+  .service-head{
+      font-size: 18px;
+      font-weight: 700;
+      margin: 10px 0 !important;
+  }
+  .service-desc{
+      text-align: justify;
+  }
+  .custom-checkbox { 
+      .input-wrapper{
+          font-size: 14px;
+      }
+      .checkbox {
+          margin-right: 10px;
+      }   
+      .item-cover {
+        width: 10%;
+      }
+    }
+  
 }
+
+

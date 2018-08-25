@@ -14,30 +14,10 @@
 
 
 <ion-content class="book-now-page" padding>
-  <ion-row>
-    <ion-col>
-      <div class="book-image">
 
-      </div>
-    </ion-col>
-  </ion-row>
   <ion-row text-center>
     <ion-col>
       <h2 class="service-head">{{item.services}}</h2>
-      <p class="service-desc">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-        text ever since the 1500.. when an unknown printer took a galley of type and scrambled it to make a type specimen
-        book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
-        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
-        more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-      </p>
-
-      <ion-item no-lines no-padding class="custom-checkbox">
-        <ion-label>I agree
-          <a (click)="openTerms()">Terms and Conditions</a>
-        </ion-label>
-        <ion-checkbox name="agree" checked="true" required></ion-checkbox>
-      </ion-item>
 
       <div class="book-price">
         <span>₹​</span> 1582.00
@@ -50,15 +30,29 @@
     <ion-label>Date</ion-label>
     <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="date"></ion-datetime>
   </ion-item>
-
+  <!-- 
   <ion-item>
     <ion-label>Slot</ion-label>
     <ion-select interface="action-sheet" [(ngModel)]="slot">
       <ion-option value="morning">Morning</ion-option>
       <ion-option value="evening">Evening</ion-option>
     </ion-select>
-  </ion-item>
+  </ion-item> -->
 
+  <ion-list radio-group [(ngModel)]="slot">
+    <ion-item>
+      <ion-label>Morning</ion-label>
+      <ion-radio value="morning" checked></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Evening</ion-label>
+      <ion-radio value="evening"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Enemies</ion-label>
+      <ion-radio value="enemies" [disabled]="isDisabled"></ion-radio>
+    </ion-item>
+  </ion-list>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
