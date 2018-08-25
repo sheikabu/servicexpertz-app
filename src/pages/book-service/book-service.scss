@@ -12,7 +12,7 @@
         font-weight: 800;
         margin-top: 25px;
         margin-bottom: 15px;
-        color: #41A7DA;
+        color: #f94118;
     }
     .service-head{
         font-size: 18px;
@@ -22,6 +22,17 @@
     .service-desc{
         text-align: justify;
     }
+    .custom-checkbox { 
+        .input-wrapper{
+            font-size: 14px;
+        }
+        .checkbox {
+            margin-right: 10px;
+        }   
+        .item-cover {
+          width: 10%;
+        }
+      }
     
 }
 
