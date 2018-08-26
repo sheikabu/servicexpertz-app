@@ -25,8 +25,14 @@
 .text-right{
     text-align: right;
 }
+.h-100{
+    height: 100%;
+}
 .mt-10{
     margin-top: 10px;
+}
+.mt-15{
+    margin-top: 15px;
 }
 .mt-20{
     margin-top: 20px;
@@ -42,10 +48,10 @@
     padding: 0 2.5em;
 }
 .button-md-secondary, .button-ios-secondary{
-    background: linear-gradient(-95deg, #41A7DA, #F1B02E) fixed;
+    background: linear-gradient(-95deg, #F1B02E, #41A7DA) fixed;
 }
 .button-md-secondary:hover, .button-md-secondary:focus{
-    background: linear-gradient(-95deg, #F1B02E, #41A7DA) fixed;
+    background: linear-gradient(-95deg, #41A7DA, #F1B02E) fixed;
 }
 .button-outline{
     border-color: #ddd;
@@ -59,6 +65,17 @@
 }
 .button-outline ion-icon.google{
     color: #D84F41;
+}
+
+.form-group{
+    label{
+        text-transform: uppercase;
+        font-size: 14px;
+        margin-bottom: 5px;
+        display: block;
+        color: #666;
+        font-weight: 500;
+    }
 }
 
 .logo{
@@ -175,7 +192,7 @@
         }
         .toolbar-title {
             color: #fff;
-            text-align: center;
+            text-align: left;
             font-size: 15px;
         }
     }
