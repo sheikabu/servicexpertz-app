@@ -1,3 +1,37 @@
-page-feedback {
+.feedback-header{
+    height: 200px;
+    .feedback-header-text{
+        color: #fff;
+        .icon{
+            font-size: 4em;
+        }
+        p{
+            margin: 0;
+        }
+        h2{
+            margin: 8px 0 5px 0;
+        }
+    }
+}
+
+.feedback-content{
+    
+ion-item {
+    border-radius: 30px !important;
+    padding-left: 10px !important;
+    font-size: 0.9em;
+    border: 1px solid #D8D8D8 !important;
+    box-shadow: none !important;
+    background-color: #FCF9F5 !important;
+}
+.item-inner {
+    border-bottom-color: #ffffff !important;
+    box-shadow: none !important;
+    margin-left: 0 !important;
+}
+
+.message{
+    height: 120px;
+}
 
 }

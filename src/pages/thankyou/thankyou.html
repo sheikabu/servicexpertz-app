@@ -4,15 +4,54 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!-- <ion-header class="thankyou-header">
 
   <ion-navbar>
     <ion-title>thankyou</ion-title>
   </ion-navbar>
+  <ion-icon name="happy"></ion-icon>
 
-</ion-header>
+</ion-header> -->
 
 
-<ion-content padding>
+<ion-content>
+  
+  <div class="thankyou-header">
+      <ion-row align-items-center class="h-100 text-center">
+          <ion-col>
+          <ion-icon name="happy"></ion-icon>
+          <h1>Thank you!</h1>
+          <p>Your Transaction was successful!</p>
+          </ion-col>
+      </ion-row>
+  </div>
+<div class="thankyou-content">
+  <p class="success-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+  <ion-row>
+      <ion-col>
+      <label class="info-label">Date</label>
+      <span class="info-data">25/03/2018</span>
+      </ion-col>
+      <ion-col class="text-right">
+          <label class="info-label">Time</label>
+          <span class="info-data">Afternoon</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="mt-30">
+          <ion-col class="text-left" col-12>
+              <label class="info-label">Amount</label>
+              <span class="info-data"><span>₹​</span> 1,538.00</span>
+              </ion-col>
+  </ion-row>
+</div>
 
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar class="thankyou-footer">
+      
+  
+      <button ion-button color="secondary" block  class="">Back to dashboard</button>
+    </ion-toolbar>
+  </ion-footer>

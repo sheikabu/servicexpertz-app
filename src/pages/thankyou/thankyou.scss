@@ -1,3 +1,42 @@
-page-thankyou {
+.thankyou-header{
+    height: 40%;
+    background: linear-gradient(-100deg, #41A7DA, #F1B02E) fixed;
+    color: #fff;
+    .icon{
+        font-size: 5em;
+    }
+    h1{
+        font-size: 33px;
+        margin-top: 1.0rem;
+        font-weight: 500;
+    }
+    p{
+        margin: 0;
+        font-size: 18px;
+    }
+}
 
+.thankyou-content{
+    padding: 20px 30px;
+    .success-desc{
+        font-size: 16px;
+        text-align: justify;
+    }
+    .info-label{
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #666;
+        margin-bottom: 5px;
+        display: block;
+    }
+    .info-data{
+        display: block;
+        font-size: 18px;
+        font-weight: 700;
+        color: #111;
+    }
+}
+
+.thankyou-footer{
+    padding: 10px 30px;
 }
