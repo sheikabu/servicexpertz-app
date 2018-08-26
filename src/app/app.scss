@@ -41,7 +41,7 @@
     border-radius: 20px;
     padding: 0 2.5em;
 }
-.button-md-secondary{
+.button-md-secondary, .button-ios-secondary{
     background: linear-gradient(-95deg, #41A7DA, #F1B02E) fixed;
 }
 .button-md-secondary:hover, .button-md-secondary:focus{
@@ -175,23 +175,29 @@
         }
         .toolbar-title {
             color: #fff;
-            text-align: left;
+            text-align: center;
             font-size: 15px;
         }
     }
     .toolbar-background{
         background-color: transparent;
+        border: 0;
     }
 }
 
 
 .segment .segment-button{
     color: #eee ;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background-color: transparent;
 }
 .segment .segment-button.segment-activated{
     color: #fff;
     border-width: 5px;
-    border-color: #dcd18a;
+    border-bottom-color: #dcd18a;
+    background-color: transparent;
 }
 
 /*--Menu---*/
@@ -240,6 +246,12 @@
     }
 }
 
+.bar-button-default-ios{
+    color: #fff;
+}
 
+.list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block{
+    border: 0;
+}
 
 

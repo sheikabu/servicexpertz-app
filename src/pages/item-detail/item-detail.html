@@ -7,14 +7,15 @@
 </ion-header>
 
 
-<ion-content class="book-now-page" padding>
+<ion-content class="item-details-page" padding>
   <ion-row>
-    <ion-col>
+    <ion-col class="book-image-col">
       <div class="book-image">
 
       </div>
     </ion-col>
   </ion-row>
+  <div class="item-detail-bg mt-10">
   <ion-row text-center>
     <ion-col>
       <h2 class="service-head">{{item.services}}</h2>
@@ -39,14 +40,15 @@
 
     </ion-col>
   </ion-row>
+</div>
 
 
 
 </ion-content>
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar padding>
     <div class="text-center">
-      <button (click)="bookNow()" ion-button color="secondary">Book Now</button>
+      <button (click)="bookNow()" ion-button color="secondary" block>Book Now</button>
     </div>
   </ion-toolbar>
 </ion-footer>
