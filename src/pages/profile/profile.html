@@ -1,9 +1,9 @@
 <ion-header>
 
   <ion-navbar>
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Profile</ion-title>
   </ion-navbar>
 
@@ -19,16 +19,16 @@
 
 
   <div *ngIf="logger" padding>
-      <ion-list>
-        <ion-item>
-            <ion-icon name="person" item-start></ion-icon>
-            {{logger.name}}
-        </ion-item>
-        <ion-item>
-            <ion-icon name="mail" item-start></ion-icon>
-            {{logger.email}}
-        </ion-item>
-      </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        {{logger.name}}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="mail" item-start></ion-icon>
+        {{logger.email}}
+      </ion-item>
+    </ion-list>
 
     <!-- <ion-card>
       <ion-card-header>
@@ -52,6 +52,10 @@
 
     <div padding>
       <button ion-button (click)="logout()" color="danger">Logout</button>
+    </div>
+
+    <div padding>
+      <button ion-button (click)="changePassword()" color="primary">Change Password</button>
     </div>
   </div>
 

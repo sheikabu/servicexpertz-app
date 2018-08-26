@@ -4,6 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+<!-- <form [formGroup]="theForm"> -->
 <ion-header>
 
   <ion-navbar>
@@ -20,55 +21,51 @@
       <h2 class="service-head">{{item.services}}</h2>
 
       <div class="book-price">
-        <span>₹​</span> 1582.00
+        <span>₹​</span> {{item.price}}
       </div>
 
     </ion-col>
   </ion-row>
+  <form [formGroup]="theForm">
+    <ion-item class="date-picker">
+      <ion-label>
+        <ion-icon name="calendar"></ion-icon>
+        Select Date
+      </ion-label>
+      <!-- <ion-datetime displayFormat="MM/DD/YYYY" formControlName="selected_date"></ion-datetime> -->
+      <ion-datetime displayFormat="MM/DD/YYYY" formControlName="selected_date"></ion-datetime>
+    </ion-item>
 
-  <ion-item class="date-picker">
-    <ion-label>
-        <ion-icon name="calendar"></ion-icon> 
-      Select Date
-    </ion-label>
-    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="date"></ion-datetime>
-  </ion-item>
-  <!-- 
-  <ion-item>
-    <ion-label>Slot</ion-label>
-    <ion-select interface="action-sheet" [(ngModel)]="slot">
-      <ion-option value="morning">Morning</ion-option>
-      <ion-option value="evening">Evening</ion-option>
-    </ion-select>
-  </ion-item> -->
-  <div class="slot-selector mt-10">
-  <label>Choose Slot</label>
-  <ion-list radio-group [(ngModel)]="slot">
-    <ion-item>
-      <ion-label>Morning</ion-label>
-      <ion-radio value="morning" checked></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Evening</ion-label>
-      <ion-radio value="evening"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Enemies</ion-label>
-      <ion-radio value="enemies" [disabled]="isDisabled"></ion-radio>
-    </ion-item>
-  </ion-list>
-</div>
+    <div class="slot-selector mt-10">
+      <label>Choose Slot</label>
+      <!-- <ion-list radio-group formControlName="selected_time"> -->
+      <ion-list radio-group formControlName="selected_time">
+        <ion-item>
+          <ion-label>Morning</ion-label>
+          <ion-radio value="morning" checked></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Evening</ion-label>
+          <ion-radio value="evening"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </div>
+  </form>
+  <pre *ngIf="theForm">
+    {{this.theForm.value | json}}
+  </pre>
 
 </ion-content>
 <ion-footer>
   <ion-toolbar padding>
-      <ion-item no-lines no-padding class="custom-checkbox">
-          <ion-label>I agree
-            <a (click)="openTerms()">Terms and Conditions</a>
-          </ion-label>
-          <ion-checkbox name="agree" checked="true" required></ion-checkbox>
-        </ion-item>
-      
-      <button ion-button color="secondary" block class="">Book Now</button>
+    <ion-item no-lines no-padding class="custom-checkbox">
+      <ion-label>I agree
+        <a (click)="openTerms()">Terms and Conditions</a>
+      </ion-label>
+      <ion-checkbox name="agree" checked="true" required></ion-checkbox>
+    </ion-item>
+
+    <button ion-button color="secondary" block (click)="bookNow()" class="">Book Now</button>
   </ion-toolbar>
 </ion-footer>
+<!-- </form> -->

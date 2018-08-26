@@ -42,6 +42,9 @@ export class ProfilePage {
     this.navCtrl.push('LoginPage', { "parentPage": this });
   }
 
+  changePassword() {
+    this.navCtrl.push('ChangePasswordPage');
+  }
 
   logout() {
     this.userSerRef.logout();

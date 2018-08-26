@@ -12,6 +12,10 @@ export class Items {
     return this.api.get(`category_list?type=${type}`);
   }
 
+  bookService(payload) {
+    return this.api.post(`booking`, payload);
+  }
+
   add(item: Item) {
   }
 
