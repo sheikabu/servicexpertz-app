@@ -16,6 +16,14 @@ export class Items {
     return this.api.post(`booking`, payload);
   }
 
+  changePassword(payload) {
+    return this.api.post(`user/change_password`, payload);
+  }
+
+  contact(payload) {
+    return this.api.post(`contact`, payload);
+  }
+
   add(item: Item) {
   }
 

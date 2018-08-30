@@ -86,4 +86,8 @@ export class LoginPage {
     });
   }
 
+  forgotPassword() {
+    alert('Not Implimented!');
+  }
+
 }

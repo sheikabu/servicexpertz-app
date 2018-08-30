@@ -1,18 +1,69 @@
 <!--
-  Generated template for the ContactPage page.
+  Generated template for the contactPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Contact</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+<ion-header class="contact-header">
+  <!-- 
+    <ion-navbar>
+      <ion-title></ion-title>
+    </ion-navbar> -->
+    <br>
+    <div class="contact-header-text text-center">
+        <ion-icon name="help-buoy"></ion-icon>
+      <h2>Get In Touch!</h2>
+      <p>Always within your reach</p>
+    </div>
+  
+  </ion-header>
+  
+  
+  <ion-content padding class="contact-content">
+  
+      <form [formGroup]="theForm" >
+          <ion-row>
+              <ion-col>
+                  <div class="form-group">
+                  <label>Name</label>
+                  <ion-item>
+                      <ion-input formControlName="name" type="text" placeholder="Enter Name" name="name"></ion-input>
+                    
+                  </ion-item>
+                </div>
+  
+                <div class="form-group mt-15">
+                    <label>Email</label>
+                    <ion-item>
+                        <ion-input formControlName="email" type="text" placeholder="Enter Email" name="email"></ion-input>
+                      
+                    </ion-item>
+                  </div>
+  
+                  <div class="form-group mt-15">
+                      <label>Subject</label>
+                      <ion-item>
+                          <ion-input formControlName="subject" type="text" placeholder="Enter Subject" name="phone"></ion-input>
+                        
+                      </ion-item>
+                    </div>
+                  
+                    <div class="form-group mt-15">
+                    <label>Message</label>
+                  <ion-item>
+                      
+                      <ion-textarea formControlName="comments" placeholder="Enter Message"  name="message" class="message"></ion-textarea>
+                  </ion-item>
+                  </div>
+                  
+              </ion-col>
+            </ion-row>
+        </form>
+  
+  </ion-content>
+  <ion-footer>
+      <ion-toolbar padding>
+    
+        <button ion-button color="secondary" block (click)="send()" class="">Contact Now</button>
+      </ion-toolbar>
+    </ion-footer>
