@@ -111,7 +111,7 @@ export class MyApp {
   openPage(page) {
     console.log(typeof page)
     if (typeof page === 'string') {
-      if (page === 'LoginPage' || page === 'RegisterPage') {
+      if (page === 'LoginPage' || page === 'RegisterPage' || page === 'FeedbackPage' || page === 'ContactPage' ) {
         console.log(page, 'pushed');
         this.nav.push(page);
       } else {

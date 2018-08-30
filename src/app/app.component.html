@@ -1,18 +1,18 @@
 <ion-menu [content]="content">
-    
 
-    <ion-content>
-            <div class="menu-cover" padding>
-                    <ion-row align-items-end>
-                            <ion-col justify-content-end>
-                        <h3>Visnesh</h3>
-                        <h4>svinesh3691@gmail.com</h4>
-                </ion-col>
-                    </ion-row>
-                    <div class="overlay"></div>
+
+        <ion-content>
+                <div class="menu-cover" padding>
+                        <ion-row align-items-end>
+                                <ion-col *ngIf="user" justify-content-end>
+                                        <h3>{{user && user.name}}</h3>
+                                        <h4>{{user && user.email}}</h4>
+                                </ion-col>
+                        </ion-row>
+                        <div class="overlay"></div>
                 </div>
-        <ion-list class="menu-list">
-            <!-- <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                <ion-list class="menu-list">
+                        <!-- <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
                 {{p.title}}
             </button> -->
 

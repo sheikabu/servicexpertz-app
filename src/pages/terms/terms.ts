@@ -14,8 +14,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'terms.html',
 })
 export class TermsPage {
+  terms: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.terms = this.navParams.get('terms');
+    console.log(this.terms);
   }
 
   ionViewDidLoad() {
