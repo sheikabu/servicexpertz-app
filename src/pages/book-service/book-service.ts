@@ -20,6 +20,10 @@ export class BookServicePage {
 
   item: any;
   theForm: FormGroup;
+  todaysDateString: any;
+  slots: any[];
+  slot_id: any;
+  terms: any = true;
 
   constructor(
     public navCtrl: NavController,
@@ -29,16 +33,29 @@ export class BookServicePage {
     public toastCtrl: ToastController,
     public itemSerRef: Items
   ) {
+
+    let loading = this.loadingCtrl.create({
+      content: 'Loading...'
+    });
+    loading.present();
     this.initForm();
     this.item = navParams.get('item');
     this.setDefaults();
+    this.todaysDateString = this.formatDate();
+    this.itemSerRef.getSlots().subscribe((res: any) => {
+      this.slots = res;
+      this.theForm.patchValue({
+        slot_id: res[0].ts_id
+      });
+      loading.dismiss();
+    });
   }
 
   initForm() {
     this.theForm = this.fb.group({
       'services_id': [null, [Validators.required]],
       'selected_date': [null, [Validators.required]],
-      'selected_time': ['morning', [Validators.required]],
+      'slot_id': ['', [Validators.required]],
       'comments': [''],
       'price': [''],
       'status': ['Pending', [Validators.required]],
@@ -58,9 +75,21 @@ export class BookServicePage {
   }
 
   bookNow() {
+
+    if (!this.terms) {
+      let toast = this.toastCtrl.create({
+        message: 'Please accept terms & conditions!',
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+      return false;
+
+    }
+
     if (!this.theForm.valid) {
       let toast = this.toastCtrl.create({
-        message: 'Please choose a date!',
+        message: 'Please choose date!',
         duration: 3000,
         position: 'top'
       });
@@ -76,9 +105,13 @@ export class BookServicePage {
     this.itemSerRef.bookService(this.theForm.value).subscribe((res: any) => {
       loading.dismiss();
       if (res && res.code === 1001) {
+        let formData = this.theForm.value;
+        formData.slot_obj = this.slots.find(s => s.ts_id === formData.slot_id)
+        formData.slot =  formData.slot_obj.ts_name;
+        formData.date = this.getDateString(formData.selected_date);
         this.navCtrl.push('ThankyouPage', {
           'item': this.item,
-          'formdata': this.theForm.value
+          'formdata': formData
         });
       } else {
         if (res && res.message) {
@@ -95,11 +128,28 @@ export class BookServicePage {
     });
   }
 
+  getDateString(date) {
+    let dateSplit = date.split('-');
+    return `${dateSplit[2]}-${dateSplit[1]}-${dateSplit[0]}`;
+  }
+
 
   openTerms() {
     this.navCtrl.push('TermsPage', {
       'terms': this.item.terms_conditions,
     });
+  }
+
+  formatDate() {
+    var d = new Date(),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
   }
 
 }
