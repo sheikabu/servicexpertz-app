@@ -24,6 +24,16 @@ export class Items {
     return this.api.post(`contact`, payload);
   }
 
+
+  getSlots() {
+    return this.api.get(`booking/slot_list`);
+  }
+
+  getBookings() {
+    return this.api.get(`booking`);
+  }
+
+
   add(item: Item) {
   }
 

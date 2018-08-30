@@ -33,21 +33,18 @@
         Choose Date
       </ion-label>
       <!-- <ion-datetime displayFormat="MM/DD/YYYY" formControlName="selected_date"></ion-datetime> -->
-      <ion-datetime displayFormat="MM/DD/YYYY" formControlName="selected_date"></ion-datetime>
+      <ion-datetime displayFormat="DD/MM/YYYY" [min]="todaysDateString" max="3000" formControlName="selected_date"></ion-datetime>
     </ion-item>
 
     <div class="slot-selector mt-10">
       <label>Choose Slot</label>
       <!-- <ion-list radio-group formControlName="selected_time"> -->
-      <ion-list radio-group formControlName="selected_time">
-        <ion-item>
-          <ion-label>Morning</ion-label>
-          <ion-radio value="morning" checked></ion-radio>
+      <ion-list radio-group formControlName="slot_id">
+        <ion-item *ngFor="let a of slots;let i =index;">
+          <ion-label>{{a.ts_name}}</ion-label>
+          <ion-radio [value]="a.ts_id"></ion-radio>
         </ion-item>
-        <ion-item>
-          <ion-label>Evening</ion-label>
-          <ion-radio value="evening"></ion-radio>
-        </ion-item>
+
       </ion-list>
     </div>
   </form>
@@ -59,10 +56,10 @@
 <ion-footer>
   <ion-toolbar padding>
     <ion-item no-lines no-padding class="custom-checkbox">
-      <ion-label>I agree
+      <ion-label>I accept
         <a (click)="openTerms()">Terms and Conditions</a>
       </ion-label>
-      <ion-checkbox name="agree" checked="true" required></ion-checkbox>
+      <ion-checkbox name="agree" [(ngModel)]="terms" checked="true" required></ion-checkbox>
     </ion-item>
 
     <button ion-button color="secondary" block (click)="bookNow()" class="">Book Now</button>

@@ -38,8 +38,8 @@ export class ThankyouPage {
       // this.navCtrl.remove(this.navCtrl.getPrevious().index - 1);
       // this.navCtrl.remove(this.navCtrl.getPrevious().index - 1);
       // this.navCtrl.remove(this.navCtrl.getPrevious().index - 1);
-      // const startIndex = this.navCtrl.getActive().index - 3;
-      // this.navCtrl.remove(startIndex, 3);
+      const startIndex = this.navCtrl.getActive().index - 3;
+      this.navCtrl.remove(startIndex, 3);
     }, 100);
 
   }
