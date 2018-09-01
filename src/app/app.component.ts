@@ -79,6 +79,7 @@ export class MyApp {
     this.userSerRef.logger().subscribe((user) => {
       this.user = user;
       console.log('User changed', this.user);
+      
     });
   }
 

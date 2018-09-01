@@ -70,12 +70,23 @@ export class User {
     return seq;
   }
 
+  refreshToken() {
+
+  }
+
   logout() {
     this.storage.set('userDetails', false);
     this.storage.set('t', null);
     this.storage.set('r', null);
     this.loggerSubject.next(false);
+  }
 
+  expiredLogOut() {
+    this.storage.set('userDetails', false);
+    this.storage.set('t', null);
+    this.storage.set('r', null);
+    this.loggerSubject.next(false);
+    window.location.reload();  
   }
 
   loggedIn(resp) {
@@ -96,8 +107,26 @@ export class User {
     )
   }
 
+  getRTokenAsObservable() {
+    return fromPromise(this.getRToken());
+  }
+
+
+  getRToken(): Promise<any> {
+    return this.storage.get('r').then(
+      data => { return data },
+      error => console.error(error)
+    )
+  }
+
   getTokenAsObservable() {
     return fromPromise(this.getToken());
+  }
+
+
+  getTokenwidRToken() {
+    return this.api.get(`refresh`);
+
   }
 
   logger() {
