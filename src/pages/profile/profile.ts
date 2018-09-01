@@ -28,6 +28,9 @@ export class ProfilePage {
   ) {
     this.userSerRef.logger().subscribe((res) => {
       this.logger = res;
+      if(!this.logger) {
+        this.navCtrl.setRoot('ListMasterPage');
+      }
     });
   }
 

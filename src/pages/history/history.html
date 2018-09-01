@@ -7,113 +7,116 @@
 <ion-header>
 
   <ion-navbar>
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>History</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content class="history-content">
-  <ion-card>
+<ion-content  class="history-content">
+  <ion-card *ngFor="let a of bookings">
 
     <ion-card-content padding>
-            <ion-avatar item-start class="history-image">
-              <img src="assets/img/queen-live.png" />
-            </ion-avatar>
-            <div class="history-details">
-            <h2>Electrician <div class="status success">Completed</div></h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            
-            </div>
-            <hr>
-            <ion-row class="main-details">
-                <ion-col col-4>
-                  <label class="main-det-label">Date</label>
-                  <span class="main-det-span">25/03/2019</span>
-                </ion-col>
-                <ion-col col-4>
-                    <label class="main-det-label">Time</label>
-                    <span class="main-det-span">Morning</span>
-                </ion-col>
-                <ion-col col-4>
-                    <label class="main-det-label">Price</label>
-                    <span class="main-det-span"><span>₹​</span>15000</span>
-                </ion-col>
-              </ion-row>
+      <ion-avatar item-start class="history-image">
+        <img src="assets/img/queen-live.png" />
+      </ion-avatar>
+      <div class="history-details">
+        <h2>Electrician
+          <div class="status success">{{a.status}}</div>
+        </h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+
+      </div>
+      <hr>
+      <ion-row class="main-details">
+        <ion-col col-4>
+          <label class="main-det-label">Date</label>
+          <span class="main-det-span">{{a.selected_date | date: 'dd-MM-yyyy'}}</span>
+        </ion-col>
+        <ion-col col-4>
+          <label class="main-det-label">Time</label>
+          <span class="main-det-span">Morning</span>
+        </ion-col>
+        <ion-col col-4>
+          <label class="main-det-label">Price</label>
+          <span class="main-det-span"><span>₹​</span>15000</span>
+        </ion-col>
+      </ion-row>
 
     </ion-card-content>
-  
+
+  </ion-card>
+  <!-- <ion-card>
+
+    <ion-card-content padding>
+      <ion-avatar item-start class="history-image">
+        <img src="assets/img/queen-live.png" />
+      </ion-avatar>
+      <div class="history-details">
+        <h2>Electrician
+          <div class="status failed">Failed</div>
+        </h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+
+      </div>
+      <hr>
+      <ion-row class="main-details">
+        <ion-col col-4>
+          <label class="main-det-label">Date</label>
+          <span class="main-det-span">25/03/2019</span>
+        </ion-col>
+        <ion-col col-4>
+          <label class="main-det-label">Time</label>
+          <span class="main-det-span">Morning</span>
+        </ion-col>
+        <ion-col col-4>
+          <label class="main-det-label">Price</label>
+          <span class="main-det-span"><span>₹​</span>15000</span>
+        </ion-col>
+      </ion-row>
+
+    </ion-card-content>
+
   </ion-card>
   <ion-card>
 
-      <ion-card-content padding>
-              <ion-avatar item-start class="history-image">
-                <img src="assets/img/queen-live.png" />
-              </ion-avatar>
-              <div class="history-details">
-              <h2>Electrician <div class="status failed">Failed</div></h2>
-              <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              
-              </div>
-              <hr>
-              <ion-row class="main-details">
-                  <ion-col col-4>
-                    <label class="main-det-label">Date</label>
-                    <span class="main-det-span">25/03/2019</span>
-                  </ion-col>
-                  <ion-col col-4>
-                      <label class="main-det-label">Time</label>
-                      <span class="main-det-span">Morning</span>
-                  </ion-col>
-                  <ion-col col-4>
-                      <label class="main-det-label">Price</label>
-                      <span class="main-det-span"><span>₹​</span>15000</span>
-                  </ion-col>
-                </ion-row>
-  
-      </ion-card-content>
-    
-    </ion-card>
-    <ion-card>
+    <ion-card-content padding>
+      <ion-avatar item-start class="history-image">
+        <img src="assets/img/queen-live.png" />
+      </ion-avatar>
+      <div class="history-details">
+        <h2>Electrician
+          <div class="status success">Completed</div>
+        </h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
 
-        <ion-card-content padding>
-                <ion-avatar item-start class="history-image">
-                  <img src="assets/img/queen-live.png" />
-                </ion-avatar>
-                <div class="history-details">
-                <h2>Electrician <div class="status success">Completed</div></h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                
-                </div>
-                <hr>
-                <ion-row class="main-details">
-                    <ion-col col-4>
-                      <label class="main-det-label">Date</label>
-                      <span class="main-det-span">25/03/2019</span>
-                    </ion-col>
-                    <ion-col col-4>
-                        <label class="main-det-label">Time</label>
-                        <span class="main-det-span">Morning</span>
-                    </ion-col>
-                    <ion-col col-4>
-                        <label class="main-det-label">Price</label>
-                        <span class="main-det-span"><span>₹​</span>15000</span>
-                    </ion-col>
-                  </ion-row>
-    
-        </ion-card-content>
-      
-      </ion-card>
+      </div>
+      <hr>
+      <ion-row class="main-details">
+        <ion-col col-4>
+          <label class="main-det-label">Date</label>
+          <span class="main-det-span">25/03/2019</span>
+        </ion-col>
+        <ion-col col-4>
+          <label class="main-det-label">Time</label>
+          <span class="main-det-span">Morning</span>
+        </ion-col>
+        <ion-col col-4>
+          <label class="main-det-label">Price</label>
+          <span class="main-det-span"><span>₹​</span>15000</span>
+        </ion-col>
+      </ion-row>
+
+    </ion-card-content>
+
+  </ion-card> -->
 </ion-content>

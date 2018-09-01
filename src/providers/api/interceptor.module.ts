@@ -1,8 +1,10 @@
 import { Injectable, NgModule } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { User } from '../user/user';
+import 'rxjs/add/operator/catch';
+
 @Injectable()
 export class HttpsRequestInterceptor implements HttpInterceptor {
 
@@ -25,7 +27,15 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
                     }
                 });
             }
-            return next.handle(req);
+            return next.handle(req).catch((err) => {
+                console.log(err);
+                if (err instanceof HttpErrorResponse && err.status == 401) {
+                    this.user.expiredLogOut();
+                    return Observable.of(null);
+                } else {
+                    return Observable.of(null);
+                }
+            });
 
         });
 

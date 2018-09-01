@@ -20,7 +20,10 @@ npm-debug.log*
 .versions/
 coverage/
 dist/
-resources/
+resources/android/
+resources/ios/
+resources/icon.png.md5
+resources/splash.png.md5
 node_modules/
 tmp/
 temp/

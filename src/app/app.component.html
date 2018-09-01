@@ -19,7 +19,7 @@
             <button menuClose ion-item (click)="openPage('ListMasterPage')">
                     <ion-icon name="home"></ion-icon> <label class="menu-label">Home</label>
             </button>
-            <button menuClose ion-item (click)="openPage('HistoryPage')">
+            <button *ngIf="user" menuClose ion-item (click)="openPage('HistoryPage')">
                 <ion-icon name="timer"></ion-icon> <label class="menu-label">History</label>
             </button>
             <button menuClose ion-item (click)="openPage('ContactPage')">
