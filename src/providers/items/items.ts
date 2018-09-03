@@ -30,7 +30,7 @@ export class Items {
   }
 
   getBookings() {
-    return this.api.get(`booking`);
+    return this.api.get(`get_booking`);
   }
 
 

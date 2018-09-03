@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class Api {
   url: string = 'http://sptx.dieselgeneratorkerala.com/index.php/api';
+  domain: string = 'http://sptx.dieselgeneratorkerala.com/';
 
   constructor(public http: HttpClient) {
   }
