@@ -38,6 +38,10 @@
           <span>₹​</span> {{item.price}}
         </div>
 
+        <div *ngIf="item.additonal_cost !== '0.00' && item.parameter" class="book-price additional-price">
+          <span>₹​</span> {{item.additonal_cost}}/{{item.parameter}}
+        </div>
+
       </ion-col>
     </ion-row>
   </div>

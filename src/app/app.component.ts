@@ -51,7 +51,7 @@ export class MyApp {
     { title: 'Categories', component: 'ListMasterPage' },
     { title: 'My Profile', component: 'ProfilePage' },
     { title: 'History', component: 'HistoryPage' },
-    { title: 'Feedback', component: 'FeedbackPage' },
+    { title: 'Contact Us', component: 'FeedbackPage' },
     { title: 'Terms & Conditions', component: 'TermsPage' },
     { title: 'Contact', component: 'ContactPage' }
   ];
