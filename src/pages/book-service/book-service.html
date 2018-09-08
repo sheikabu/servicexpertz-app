@@ -37,19 +37,17 @@
     </ion-item>
 
 
-    <ion-item class="date-picker">
+    <ion-item class="mt-10">
       <ion-label>City</ion-label>
-      <ion-select >
-        <ion-option value="f">Female</ion-option>
-        <ion-option value="m">Male</ion-option>
+      <ion-select formControlName="city_id">
+        <ion-option *ngFor="let a of cities;let i =index;" [value]="a.city_id">{{a.city_name}}</ion-option>
       </ion-select>
     </ion-item>
 
 
-
-    <ion-item class="date-picker">
+    <ion-item class="mt-10">
       <ion-label>PIN</ion-label>
-      <ion-input placeholder="PIN"></ion-input>
+      <ion-input formControlName="pincode"></ion-input>
     </ion-item>
 
     <div class="slot-selector mt-10">
@@ -62,6 +60,7 @@
         </ion-item>
 
       </ion-list>
+      <div *ngIf="slots && !slots.length" style="margin:12px;"> &nbsp;No slots available for this date </div>
     </div>
   </form>
   <!-- <pre *ngIf="theForm">

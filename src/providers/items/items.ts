@@ -29,6 +29,10 @@ export class Items {
     return this.api.get(`booking/slot_list`);
   }
 
+  getCities() {
+    return this.api.get(`booking/city_list`);
+  }
+
   getBookings() {
     return this.api.get(`get_booking`);
   }
