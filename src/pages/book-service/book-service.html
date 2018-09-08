@@ -27,7 +27,7 @@
     </ion-col>
   </ion-row>
   <form [formGroup]="theForm">
-    <ion-item class="date-picker">
+    <ion-item class="date-picker input-box">
       <ion-label>
         <ion-icon name="calendar"></ion-icon>
         Choose Date
@@ -37,7 +37,7 @@
     </ion-item>
 
 
-    <ion-item class="mt-10">
+    <ion-item class="input-box mt-10">
       <ion-label>City</ion-label>
       <ion-select formControlName="city_id">
         <ion-option *ngFor="let a of cities;let i =index;" [value]="a.city_id">{{a.city_name}}</ion-option>
@@ -45,9 +45,10 @@
     </ion-item>
 
 
-    <ion-item class="mt-10">
-      <ion-label>PIN</ion-label>
-      <ion-input formControlName="pincode"></ion-input>
+
+    <ion-item class="input-box mt-10">
+
+      <ion-input placeholder="Enter your Pin" formControlName="pincode"></ion-input>
     </ion-item>
 
     <div class="slot-selector mt-10">
