@@ -21,14 +21,16 @@
 
     <ion-card-content padding>
       <ion-avatar item-start class="history-image">
-        <img src="assets/img/queen-live.png" />
+        <img src="{{api.domain}}{{a.image}}" />
+        <!-- <img src="assets/img/queen-live.png" /> -->
       </ion-avatar>
       <div class="history-details">
-        <h2>Electrician
+        <h2>{{a.services}}
           <div class="status success">{{a.status}}</div>
         </h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          {{a.description}}
+          <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. -->
         </p>
 
       </div>
@@ -40,11 +42,11 @@
         </ion-col>
         <ion-col col-4>
           <label class="main-det-label">Time</label>
-          <span class="main-det-span">Morning</span>
+          <span class="main-det-span">{{a.ts_name}}</span>
         </ion-col>
         <ion-col col-4>
           <label class="main-det-label">Price</label>
-          <span class="main-det-span"><span>₹​</span>15000</span>
+          <span class="main-det-span"><span>₹​</span>{{a.price}}</span>
         </ion-col>
       </ion-row>
 

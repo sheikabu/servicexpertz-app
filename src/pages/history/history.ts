@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { Items } from '../../providers/items/items';
 import { User } from '../../providers/user/user';
 import { ListMasterPage } from '../list-master/list-master';
+import { Api } from '../../providers';
 
 /**
  * Generated class for the HistoryPage page.
@@ -28,8 +29,9 @@ export class HistoryPage {
     public toastCtrl: ToastController,
     public itemSerRef: Items,
     public userSerRef: User,
+    public api: Api,
   ) {
-
+    console.log(api.domain)
     let loading = this.loadingCtrl.create({
       content: 'Loading...'
     });
