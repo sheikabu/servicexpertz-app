@@ -4,12 +4,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>My Profile</ion-title>
+    <!-- <ion-title>My Profile</ion-title> -->
   </ion-navbar>
 
 </ion-header>
 
-<ion-content class="profile-page" padding>
+<ion-content class="profile-page auth-page" padding>
+
+    <div class="circle"></div>
+
+    <div class="profile-content">
   <div class="profile-image-wrapper">
   <div class="profile-image">
     <img src="assets/img/queen-live.png" />
@@ -69,7 +73,7 @@
         <button ion-button (click)="logout()" color="danger">Logout</button>
       </div> -->
   </div>
-
+</div>
   
 
 
