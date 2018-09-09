@@ -35,7 +35,6 @@ export class ProfilePage {
   }
 
   ionViewDidLoad() {
-    console.log('Loading Profile');
   }
 
   ionViewWillEnter() {
@@ -66,8 +65,31 @@ export class ProfilePage {
   }
 
   ngOnChanges() {
-    console.log('Ng All Changes');
   }
 
+
+  onImageSelect(e) {
+    console.log(e);
+    // const files = e.srcElement.files;
+    // this.logoLoading = true;
+    // const reader = new FileReader();
+    // reader.readAsDataURL(files.item(0)); // read file as data url
+    // reader.onload = (event: any) => { // called once readAsDataURL is completed
+    //   this.companyLogo = event.target.result;
+    // };
+
+    // this.companySerRef.uploadLogo(files.item(0)).subscribe((res: any) => {
+    //   this.logoLoading = false;
+    //   if (res && res.status === 'success') {
+    //     this.logoAvailable = true;
+
+    //     this.cmnServiceRef.showToast('Logo upload successful');
+    //     this.companyLogo = `${AppConstants.api_url}assets/uploads/company/logo/${res.file_name}`;
+    //   } else {
+    //     this.logoAvailable = false;
+    //     this.companyLogo = this.defaultCompanyLogo;
+    //   }
+    // });
+  }
 
 }

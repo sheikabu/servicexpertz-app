@@ -31,7 +31,6 @@ export class HistoryPage {
     public userSerRef: User,
     public api: Api,
   ) {
-    console.log(api.domain)
     let loading = this.loadingCtrl.create({
       content: 'Loading...'
     });
@@ -45,15 +44,13 @@ export class HistoryPage {
       } else {
         this.itemSerRef.getBookings().subscribe((res: any) => {
           loading.dismiss();
-          this.bookings = res.filter(res => res.booking_id > 27);
-          console.log(this.bookings);
+          this.bookings = res;
         });
       }
     });
 
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HistoryPage');
   }
 
 }

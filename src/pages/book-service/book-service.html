@@ -51,9 +51,8 @@
       <ion-input placeholder="Enter your Pin" formControlName="pincode"></ion-input>
     </ion-item>
 
-    <div class="slot-selector mt-10">
+    <!-- <div class="slot-selector mt-10">
       <label>Choose Slot</label>
-      <!-- <ion-list radio-group formControlName="selected_time"> -->
       <ion-list radio-group formControlName="slot_id">
         <ion-item *ngFor="let a of slots;let i =index;">
           <ion-label>{{a.ts_name}}</ion-label>
@@ -65,40 +64,17 @@
       
 
       <div *ngIf="slots && !slots.length" style="margin:12px;"> &nbsp; No slots available for this date </div>
-    </div>
+    </div> -->
 
     <label class="slot-selector-label mt-15">Choose Slot</label>
     <ion-row class="time-slot">
-      <ion-col col-4>
+      <ion-col *ngFor="let a of slots;let i =index;" col-4>
           <div class="selection">
-              <input id="slot1" name="slot" type="radio">
-              <label for="slot1">6am-9am</label>
+              <input formControlName="slot_id" [value]="a.ts_id" id="slot{{i}}" type="radio">
+              <label for="slot{{i}}">{{a.ts_name}}</label>
             </div>
       </ion-col>
-      <ion-col col-4>
-          <div class="selection">
-              <input id="slot2" name="slot" type="radio">
-              <label for="slot2">9am-12pm</label>
-            </div>
-      </ion-col>
-      <ion-col col-4>
-          <div class="selection">
-              <input id="slot3" name="slot" type="radio">
-              <label for="slot3">12pm-2pm</label>
-            </div>
-      </ion-col>
-      <ion-col col-4>
-          <div class="selection">
-              <input id="slot4" name="slot" type="radio">
-              <label for="slot4">2pm-5pm</label>
-            </div>
-      </ion-col>
-      <ion-col col-4>
-          <div class="selection">
-              <input id="slot5" name="slot" type="radio">
-              <label for="slot5">2pm-5pm</label>
-            </div>
-      </ion-col>
+      
     </ion-row>
 
 

@@ -18,11 +18,9 @@ export class TermsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.terms = this.navParams.get('terms');
-    console.log(this.terms);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TermsPage');
   }
 
 }
