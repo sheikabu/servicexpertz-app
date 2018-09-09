@@ -47,7 +47,6 @@ export class ListMasterPage {
       }
       loading.dismiss();
     }, (err) => {
-      console.log(err);
     })
   }
 

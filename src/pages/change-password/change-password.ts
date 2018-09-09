@@ -33,7 +33,6 @@ export class ChangePasswordPage {
     this.initForm();
     this.userSerRef.logger().subscribe((res) => {
       this.logger = res;
-      console.log(this.logger);
       this.theForm.patchValue({
         email: this.logger.email
       });
@@ -52,7 +51,6 @@ export class ChangePasswordPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ChangePasswordPage');
   }
 
 

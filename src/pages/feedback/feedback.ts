@@ -19,7 +19,6 @@ export class FeedbackPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FeedbackPage');
   }
 
 }
