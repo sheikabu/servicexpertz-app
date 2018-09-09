@@ -86,7 +86,7 @@ export class User {
     this.storage.set('t', null);
     this.storage.set('r', null);
     this.loggerSubject.next(false);
-    window.location.reload();  
+    window.location.reload();
   }
 
   loggedIn(resp) {
@@ -133,4 +133,14 @@ export class User {
     return this.loggerSubject.asObservable();
     // return this.storage.get('userDetails');
   }
+
+
+  uploadImage(id, fileToUpload) {
+    const formData: FormData = new FormData();
+    formData.append('user_image', fileToUpload);
+
+    return this.api.post(`user/image_upload?id=${id}`, formData);
+  }
+
+
 }
