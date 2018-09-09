@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { User } from '../../providers/user/user';
 import { MainPage } from '..';
+import { Api } from '../../providers';
 
 
 /**
@@ -18,18 +19,25 @@ import { MainPage } from '..';
 })
 export class ProfilePage {
   logger: any;
-
+  profileImg = 'assets/img/queen-live.png';
+  imageLoading: boolean;
 
   constructor(
     public navCtrl: NavController,
+    public api: Api,
     public userSerRef: User,
     public toastCtrl: ToastController,
 
   ) {
     this.userSerRef.logger().subscribe((res) => {
       this.logger = res;
-      if(!this.logger) {
+      console.log(this.logger);
+      if (!this.logger) {
         this.navCtrl.setRoot('ListMasterPage');
+      } else {
+        if (this.logger.user_image) {
+          this.profileImg = `${this.api.domain}${this.logger.user_image}`;
+        }
       }
     });
   }
@@ -70,26 +78,24 @@ export class ProfilePage {
 
   onImageSelect(e) {
     console.log(e);
-    // const files = e.srcElement.files;
-    // this.logoLoading = true;
-    // const reader = new FileReader();
-    // reader.readAsDataURL(files.item(0)); // read file as data url
-    // reader.onload = (event: any) => { // called once readAsDataURL is completed
-    //   this.companyLogo = event.target.result;
-    // };
+    const files = e.srcElement.files;
+    this.imageLoading = true;
+    const reader = new FileReader();
+    reader.readAsDataURL(files.item(0));
+    reader.onload = (event: any) => {
+      this.profileImg = event.target.result;
+    };
 
-    // this.companySerRef.uploadLogo(files.item(0)).subscribe((res: any) => {
-    //   this.logoLoading = false;
-    //   if (res && res.status === 'success') {
-    //     this.logoAvailable = true;
-
-    //     this.cmnServiceRef.showToast('Logo upload successful');
-    //     this.companyLogo = `${AppConstants.api_url}assets/uploads/company/logo/${res.file_name}`;
-    //   } else {
-    //     this.logoAvailable = false;
-    //     this.companyLogo = this.defaultCompanyLogo;
-    //   }
-    // });
+    this.userSerRef.uploadImage(this.logger.user_id, files.item(0)).subscribe((res: any) => {
+      this.imageLoading = false;
+      console.log(res);
+      if (res && res.status === 'success') {
+        this.imageLoading = true;
+        this.profileImg = `${this.api.domain}${res.image_path}`;
+        this.logger.user_image = res.image_path;
+        this.userSerRef.loggedIn(this.logger);
+      }
+    });
   }
 
 }

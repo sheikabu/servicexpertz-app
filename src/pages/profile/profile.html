@@ -18,7 +18,7 @@
     <div class="profile-image-wrapper">
       <div class="profile-image">
           <input type="file" (change)="onImageSelect($event)" id="imageupload">
-        <img src="assets/img/queen-live.png" />
+        <img [src]="profileImg" />
         <div class="camrea" >
           <ion-icon name="camera"></ion-icon>
         </div>
