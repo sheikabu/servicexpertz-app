@@ -12,7 +12,6 @@ export class ItemDetailPage {
 
   constructor(public navCtrl: NavController, navParams: NavParams) {
     this.item = navParams.get('item');
-    console.log(this.item);
   }
 
   bookNow() {
