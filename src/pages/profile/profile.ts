@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { User } from '../../providers/user/user';
 import { MainPage } from '..';
 import { Api } from '../../providers';
@@ -27,7 +27,7 @@ export class ProfilePage {
     public api: Api,
     public userSerRef: User,
     public toastCtrl: ToastController,
-
+    public loadingCtrl: LoadingController,
   ) {
     this.userSerRef.logger().subscribe((res) => {
       this.logger = res;
@@ -78,6 +78,11 @@ export class ProfilePage {
 
   onImageSelect(e) {
     console.log(e);
+    let loading = this.loadingCtrl.create({
+      content: 'Uploading...'
+    });
+    loading.present();
+    
     const files = e.srcElement.files;
     this.imageLoading = true;
     const reader = new FileReader();
@@ -95,6 +100,7 @@ export class ProfilePage {
         this.logger.user_image = res.image_path;
         this.userSerRef.loggedIn(this.logger);
       }
+      loading.dismiss();
     });
   }
 
