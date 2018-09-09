@@ -11,31 +11,32 @@
 
 <ion-content class="profile-page auth-page" padding>
 
-    <div class="circle"></div>
+  <div class="circle"></div>
+  <input type="file" (change)="onImageSelect($event)" id="imageupload">
 
-    <div class="profile-content">
-  <div class="profile-image-wrapper">
-  <div class="profile-image">
-    <img src="assets/img/queen-live.png" />
-    <div class="camrea">
-      <ion-icon name="camera"></ion-icon>
+  <div for="imageupload" class="profile-content">
+    <div class="profile-image-wrapper">
+      <div class="profile-image">
+        <img src="assets/img/queen-live.png" />
+        <div class="camrea" >
+          <ion-icon name="camera"></ion-icon>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<!-- 
+    <!-- 
   <div *ngIf="!logger">
     <button ion-button block (click)="register()">Register</button>
     <button ion-button block (click)="login()" class="login">Login</button>
   </div> -->
 
 
-  <div *ngIf="logger" padding class="profile-data-wrapper mt-20">
+    <div *ngIf="logger" padding class="profile-data-wrapper mt-20">
 
-    <h3>{{logger.name}}</h3>
-    <p>{{logger.email}}</p>
+      <h3>{{logger.name}}</h3>
+      <p>{{logger.email}}</p>
 
 
-    <!-- <ion-list>
+      <!-- <ion-list>
       <ion-item>
         <ion-icon name="person" item-start></ion-icon>
         {{logger.name}}
@@ -46,7 +47,7 @@
       </ion-item>
     </ion-list> -->
 
-    <!-- <ion-card>
+      <!-- <ion-card>
       <ion-card-header>
         Details
       </ion-card-header>
@@ -66,15 +67,15 @@
     </ion-card> -->
 
 
-    <div class="mt-15">
-      <button ion-button (click)="changePassword()" color="secondary">Change Password</button>
-    </div>
-    <!-- <div class="mt-10">
+      <div class="mt-15">
+        <button ion-button (click)="changePassword()" color="secondary">Change Password</button>
+      </div>
+      <!-- <div class="mt-10">
         <button ion-button (click)="logout()" color="danger">Logout</button>
       </div> -->
+    </div>
   </div>
-</div>
-  
+
 
 
 

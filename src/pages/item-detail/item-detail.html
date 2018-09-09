@@ -21,20 +21,25 @@
         <h2 class="service-head">{{item.services}}</h2>
 
         <div class="book-price">
-            <span>₹​</span> {{item.price}} <span class="unit">/ hr</span>
-          </div>
-  
-          <div class="additional-price">
-            <!-- <span>₹​</span> {{item.additonal_cost}}/{{item.parameter}} -->
-            *  Additional <span>₹​</span><strong>5/hr</strong> after regular time
-          </div>
+          <span>₹​</span> {{item.price}} <span class="unit">/ hr</span>
+        </div>
+
+        <div *ngIf="item.additonal_cost && item.parameter" class="additional-price">
+          <!-- <span>₹​</span> {{item.additonal_cost}}/{{item.parameter}} -->
+          * Additional &nbsp; <span>₹​</span><strong>{{item.additonal_cost}} {{item.parameter}}</strong>
+          <!-- after regular time -->
+        </div>
 
 
         <p class="service-desc mt-20">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-          text ever since the 1500.. when an unknown printer took a galley of type and scrambled it to make a type specimen
-          book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
-          unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's standard dummy
+          text ever since the 1500.. when an unknown printer took a galley of type and scrambled it to make a type
+          specimen
+          book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+          essentially
+          unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+          passages,
           and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
         </p>
 
@@ -45,7 +50,7 @@
           <ion-checkbox name="agree" checked="true" required></ion-checkbox>
         </ion-item> -->
 
-       
+
 
       </ion-col>
     </ion-row>

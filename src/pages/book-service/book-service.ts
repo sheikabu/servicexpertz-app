@@ -47,9 +47,7 @@ export class BookServicePage {
 
   subDateChange() {
     this.theForm.get('selected_date').valueChanges.subscribe((val) => {
-      console.log(val);
       const theDate = new Date(val);
-      console.log(theDate);
       var d = new Date(); // for now
       if (
         theDate.getDate() === d.getDate()
@@ -58,12 +56,11 @@ export class BookServicePage {
         &&
         theDate.getFullYear() === d.getFullYear()
       ) {
-        console.log("Same Date");
         this.theForm.patchValue({
           slot_id: null
         });
         this.slots = this.actualSlots.filter((s)=>{
-          return s.till_time > d.getHours() + 1
+          return s.till_time > d.getHours()
         })
       } else {
         this.slots = this.actualSlots.filter((s)=>{
@@ -105,7 +102,6 @@ export class BookServicePage {
         return true
       })
 
-      console.log(this.slots);
       // this.theForm.patchValue({
       //   slot_id: res[0].ts_id
       // });

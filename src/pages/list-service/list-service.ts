@@ -21,9 +21,7 @@ export class ListServicePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userSerRef: User, public toastCtrl: ToastController) {
     this.item = navParams.get('item');
-    console.log(this.item);
     this.services = this.item.services;
-    console.log(this.services);
 
     this.userSerRef.logger().subscribe(res => {
       this.user = res;
@@ -31,7 +29,6 @@ export class ListServicePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListServicePage');
   }
 
 
