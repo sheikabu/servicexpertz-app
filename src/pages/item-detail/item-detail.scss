@@ -36,15 +36,25 @@
   .book-price{
       font-size: 28px;
       font-weight: 800;
-      margin-top: 15px;
-      margin-bottom: 15px;
+      margin-top: 0;
+      margin-bottom: 5px;
       color: #f94118;
+      .unit{
+          font-size: 17px;
+      }
+  }
+  .additional-price{
+      font-size: 15px;
+      font-style: italic;
+      strong{
+          font-style: normal;
+      }
   }
   .service-head{
       font-size: 18px;
       font-weight: 700;
-      margin: 10px 0 !important;
-      color: #41A7DA;
+      margin: 8px 0 !important;
+    //   color: #41A7DA;
   }
   .service-desc{
       text-align: justify;

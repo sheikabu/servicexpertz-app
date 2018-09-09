@@ -38,7 +38,7 @@
 
 
     <ion-item class="input-box mt-10">
-      <ion-label>City</ion-label>
+      <ion-label>Select City</ion-label>
       <ion-select formControlName="city_id">
         <ion-option *ngFor="let a of cities;let i =index;" [value]="a.city_id">{{a.city_name}}</ion-option>
       </ion-select>
@@ -61,8 +61,47 @@
         </ion-item>
 
       </ion-list>
+
+      
+
       <div *ngIf="slots && !slots.length" style="margin:12px;"> &nbsp; No slots available for this date </div>
     </div>
+
+    <label class="slot-selector-label mt-15">Choose Slot</label>
+    <ion-row class="time-slot">
+      <ion-col col-4>
+          <div class="selection">
+              <input id="slot1" name="slot" type="radio">
+              <label for="slot1">6am-9am</label>
+            </div>
+      </ion-col>
+      <ion-col col-4>
+          <div class="selection">
+              <input id="slot2" name="slot" type="radio">
+              <label for="slot2">9am-12pm</label>
+            </div>
+      </ion-col>
+      <ion-col col-4>
+          <div class="selection">
+              <input id="slot3" name="slot" type="radio">
+              <label for="slot3">12pm-2pm</label>
+            </div>
+      </ion-col>
+      <ion-col col-4>
+          <div class="selection">
+              <input id="slot4" name="slot" type="radio">
+              <label for="slot4">2pm-5pm</label>
+            </div>
+      </ion-col>
+      <ion-col col-4>
+          <div class="selection">
+              <input id="slot5" name="slot" type="radio">
+              <label for="slot5">2pm-5pm</label>
+            </div>
+      </ion-col>
+    </ion-row>
+
+
   </form>
   <!-- <pre *ngIf="theForm">
     {{this.theForm.value | json}}
