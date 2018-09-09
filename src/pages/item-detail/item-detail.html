@@ -19,7 +19,18 @@
     <ion-row text-center>
       <ion-col>
         <h2 class="service-head">{{item.services}}</h2>
-        <p class="service-desc">
+
+        <div class="book-price">
+            <span>₹​</span> {{item.price}} <span class="unit">/ hr</span>
+          </div>
+  
+          <div class="additional-price">
+            <!-- <span>₹​</span> {{item.additonal_cost}}/{{item.parameter}} -->
+            *  Additional <span>₹​</span><strong>5/hr</strong> after regular time
+          </div>
+
+
+        <p class="service-desc mt-20">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
           text ever since the 1500.. when an unknown printer took a galley of type and scrambled it to make a type specimen
           book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
@@ -34,13 +45,7 @@
           <ion-checkbox name="agree" checked="true" required></ion-checkbox>
         </ion-item> -->
 
-        <div class="book-price">
-          <span>₹​</span> {{item.price}}
-        </div>
-
-        <div *ngIf="item.additonal_cost !== '0.00' && item.parameter" class="book-price additional-price">
-          <span>₹​</span> {{item.additonal_cost}}/{{item.parameter}}
-        </div>
+       
 
       </ion-col>
     </ion-row>

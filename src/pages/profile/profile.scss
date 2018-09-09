@@ -66,7 +66,7 @@
     }
 }
 @media screen and (min-width: 480px){
-    .auth-page .circle {
+    .profile-page .circle {
         width: 1000px;
         height: 1000px;
         border-radius: 50%;
@@ -79,7 +79,7 @@
 }
 
 @media screen and (min-height: 700px){
-    .circle {
+    .profile-page .circle {
         top: -40% !important;
     }
 }

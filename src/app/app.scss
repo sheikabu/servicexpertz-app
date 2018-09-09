@@ -45,6 +45,8 @@
 }
 .disabled{
     opacity: 0.3;
+    pointer-events: none;
+    cursor: not-allowed;
 }
 .button-default{
     border-radius: 20px;
@@ -168,6 +170,14 @@
     } 
 
 }  
+
+
+.alert-head{
+    padding: 15px !important;
+    .alert-title{
+        font-size: 17px;
+    }
+}
  
 @media screen and (min-width: 480px){
     .auth-page .circle {
