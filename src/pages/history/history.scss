@@ -1,6 +1,8 @@
 .history-content{
     background-color: #f5f5f5;
-
+    .italic{
+        font-style: italic;
+    }
     .status{
         padding: 3px 8px;
         color: #fff;
@@ -37,9 +39,13 @@
         p{
             display: block;
             overflow: hidden;
-            height: 32px;
+            // height: 32px;
             font-size: 13px;
-            line-height: 16px;
+            margin-bottom: 3px;
+        }
+        .message{
+            font-style: italic;
+            margin: 8px 0;
         }
         
     }
