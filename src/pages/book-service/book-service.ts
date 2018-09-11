@@ -60,7 +60,7 @@ export class BookServicePage {
           slot_id: null
         });
         this.slots = this.actualSlots.filter((s)=>{
-          return s.till_time > d.getHours()
+          return +s.till_time > d.getHours()
         })
       } else {
         this.slots = this.actualSlots.filter((s)=>{
@@ -72,36 +72,40 @@ export class BookServicePage {
 
   getSlots() {
     this.itemSerRef.getSlots().subscribe((res: any) => {
-      this.actualSlots = res.map((s) => {
-        switch (+s.ts_id) {
-          case 1:
-            s.till_time = 4
-            break;
-          case 2:
-            s.till_time = 7
-            break;
-          case 3:
-            s.till_time = 10
-            break;
-          case 4:
-            s.till_time = 13
-            break;
-          case 5:
-            s.till_time = 16
-            break;
-          case 6:
-            s.till_time = 19
-            break;
-          default:
-            s.till_time = 0
-        }
-        return s;
-      });
+      this.actualSlots = res;
+      // this.actualSlots = res.map((s) => {
+      //   switch (+s.ts_id) {
+      //     case 1:
+      //       s.till_time = 4
+      //       break;
+      //     case 2:
+      //       s.till_time = 7
+      //       break;
+      //     case 3:
+      //       s.till_time = 10
+      //       break;
+      //     case 4:
+      //       s.till_time = 13
+      //       break;
+      //     case 5:
+      //       s.till_time = 16
+      //       break;
+      //     case 6:
+      //       s.till_time = 19
+      //       break;
+      //     default:
+      //       s.till_time = 0
+      //   }
+      //   return s;
+      // });
+      console.log(this.actualSlots);
+
 
       this.slots = this.actualSlots.filter(() => {
         return true
       })
 
+      console.log(this.slots);
       // this.theForm.patchValue({
       //   slot_id: res[0].ts_id
       // });

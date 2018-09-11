@@ -16,13 +16,14 @@
 </ion-header>
 
 
-<ion-content  class="history-content">
+<ion-content class="history-content">
   <ion-card *ngFor="let a of bookings">
 
     <ion-card-content padding>
       <ion-avatar item-start class="history-image">
-        <img src="{{api.domain}}{{a.image}}" />
+        <img *ngIf="a.image" src="{{api.domain}}{{a.image}}" />
         <!-- <img src="assets/img/queen-live.png" /> -->
+        <img *ngIf="!a.image" src="assets/img/menu-bg.jpg" />
       </ion-avatar>
       <div class="history-details">
         <h2>{{a.services}}
@@ -33,13 +34,14 @@
           <!-- {{a.description}} -->
           <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. -->
         </p>
-        
+
         <p class="message">
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+          <!-- "Lorem Ipsum is simply dummy text of the printing and typesetting industry." -->
+          {{a.description}}
         </p>
 
-        <p class="italic">
-            * Additional &nbsp; <span>₹​</span><strong>5.00 /hr</strong>
+        <p class="italic" *ngIf="a.additonal_cost && a.parameter">
+          * Additional &nbsp; <span>₹​</span><strong>{{a.additonal_cost}} {{a.parameter}}</strong>
         </p>
 
       </div>

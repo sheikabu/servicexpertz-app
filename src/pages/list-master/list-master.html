@@ -32,13 +32,13 @@
   <ion-card-content>
       <button ion-item (click)="openItem(a)">
           <ion-avatar item-start>
-            <img src="assets/img/queen-live.png" />
+            <img *ngIf="!a.category_image" src="assets/img/menu-bg.jpg" />
+            <img *ngIf="a.category_image" src="{{this.baseUrl}}{{a.category_image}}" />
           </ion-avatar>
           <h2>{{a.category}}</h2>
           <p>{{a.description}}</p>
         </button>
   </ion-card-content>
-
 </ion-card>
 
   <!-- <ion-list>

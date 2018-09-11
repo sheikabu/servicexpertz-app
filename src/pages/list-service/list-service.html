@@ -12,7 +12,8 @@
   <ion-card-content>
       <button ion-item (click)="bookItem(a)">
           <ion-avatar item-start>
-            <img src="assets/img/queen-live.png" />
+            <img *ngIf="!a.image" src="assets/img/menu-bg.jpg" />
+            <img *ngIf="a.image" src="{{baseUrl}}{{a.image}}" />
           </ion-avatar>
           <h2>{{a.services}}</h2>
           <p>{{a.description}}</p>

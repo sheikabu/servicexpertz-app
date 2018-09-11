@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { User } from '../../providers';
+import { User, Api } from '../../providers';
 
 /**
  * Generated class for the ListServicePage page.
@@ -18,14 +18,23 @@ export class ListServicePage {
   item: any;
   services: any;
   user: any;
+  baseUrl: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userSerRef: User, public toastCtrl: ToastController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public userSerRef: User,
+    public toastCtrl: ToastController,
+    public api: Api
+  ) {
     this.item = navParams.get('item');
     this.services = this.item.services;
 
     this.userSerRef.logger().subscribe(res => {
       this.user = res;
     });
+    this.baseUrl = this.api.domain;
+
   }
 
   ionViewDidLoad() {
