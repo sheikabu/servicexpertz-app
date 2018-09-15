@@ -1,35 +1,35 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{item && item.category}}</ion-title>
+    <ion-title>{{item && item.sub_category}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="card-background-page">
 
-  <ion-card  *ngFor="let a of services">
+  <!-- <ion-card  *ngFor="let a of services">
 
   <ion-card-content>
       <button ion-item (click)="bookItem(a)">
           <ion-avatar item-start>
-            <img src="assets/img/queen-live.png" />
+            <img *ngIf="!a.image" src="assets/img/menu-bg.jpg" />
+            <img *ngIf="a.image" src="{{baseUrl}}{{a.image}}" />
           </ion-avatar>
           <h2>{{a.services}}</h2>
           <p>{{a.description}}</p>
         </button>
   </ion-card-content>
 
-</ion-card>
+</ion-card> -->
 
-<ion-card  *ngFor="let a of services">
-    <ion-card-content  style="background-image:url(assets/img/queen-live.png)">
-  <!-- <img src="assets/img/queen-live.png"/> -->
-  <div class="service-foot">
-  <div class="card-title">{{a.services}}</div> 
-  <button ion-button color="secondary" (click)="bookItem(a)" class="">Book</button>
-</div>
-</ion-card-content>
-</ion-card>
+  <ion-card *ngFor="let a of services">
+    <ion-card-content [ngStyle]="{'background-image': a.image ? 'url('+baseUrl+a.image+')' : 'url(assets/img/queen-live.png)' }">
+      <div class="service-foot">
+        <div class="card-title">{{a.services}}</div>
+        <button ion-button color="secondary" (click)="bookItem(a)" class="">Book</button>
+      </div>
+    </ion-card-content>
+  </ion-card>
 
   <!-- <ion-list>
     <ion-item *ngFor="let a of cats">

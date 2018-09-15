@@ -99,15 +99,27 @@
       </div>
       <div class="ion-row text-center mt-20">
           <div class="col">
-              <button ion-button round outline class="social-buttons">
+              <button (click)="facebook()" ion-button round outline class="social-buttons">
                   <ion-icon name="logo-facebook" class="facebook"></ion-icon>
                   Sign In with Facebook
               </button>
-              <button ion-button round outline class="social-buttons">
+              <!-- <button ion-button round outline class="social-buttons">
                   <ion-icon name="logo-google" class="google"></ion-icon>
                   Sign In with Google
-              </button>
+              </button> -->
           </div>
+
+          <!-- Result
+
+          <pre>
+            {{successResOne|json}}
+          </pre>
+        
+        
+          <pre>
+              {{successResTwo|json}}
+          </pre> -->
+        
         </div>
 </div>
 </ion-content>

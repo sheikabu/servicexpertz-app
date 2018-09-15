@@ -3,7 +3,7 @@ import { IonicPage, ModalController, NavController, LoadingController } from 'io
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers/items/items';
-import { User } from '../../providers';
+import { User, Api } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -15,19 +15,23 @@ export class ListMasterPage {
   type: any = '1';
   cats: ArrayBuffer;
   user: any;
+  baseUrl: any;
 
   constructor(
     public navCtrl: NavController,
     public itemSerRef: Items,
     public modalCtrl: ModalController,
     public loadingCtrl: LoadingController,
-    public userSerRef: User
+    public userSerRef: User,
+    public api: Api
   ) {
     // this.currentItems = this.items.query();
     this.getCategories();
     this.userSerRef.logger().subscribe((user) => {
       this.user = user;
     });
+    this.baseUrl = this.api.domain;
+    console.log(this.baseUrl,'ssss');
   }
 
   /**
@@ -67,7 +71,7 @@ export class ListMasterPage {
   }
 
   toProfile() {
-    if(this.user) {
+    if (this.user) {
       this.navCtrl.push('ProfilePage');
     } else {
       this.navCtrl.push('LoginPage');
