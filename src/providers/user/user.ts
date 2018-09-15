@@ -54,6 +54,30 @@ export class User {
     return seq;
   }
 
+  fbLogin(accountInfo: any) {
+    let seq = this.api.post('fb_login', accountInfo).share();
+
+    seq.subscribe((res: any) => {
+      if (res.status == 'success') {
+        this.loggedIn(res);
+      } else {
+      }
+    }, err => {
+      console.error('ERROR', err);
+    });
+
+    return seq;
+  }
+
+
+  forgotPassword(email) {
+    return this.api.post(`forgot_password`, { email });
+  }
+
+  get(url, params = {}) {
+    return this.api.get(url, params);
+  }
+
   register(accountInfo: any) {
     let seq = this.api.post('user/create', accountInfo).share();
 

@@ -1,10 +1,13 @@
 
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, NavParams, LoadingController, Platform } from 'ionic-angular';
+import { OauthCordova } from 'ng2-cordova-oauth/platform/cordova';
+import { Facebook, Google, LinkedIn } from "ng2-cordova-oauth/core";
 
 import { User } from '../../providers';
 import { MainPage } from '../';
+import { HttpClient } from '@angular/common/http';
 
 @IonicPage()
 @Component({
@@ -22,12 +25,32 @@ export class LoginPage {
   private loginErrorString: string;
   parentPage: any;
 
+
+
+  //Facebook
+  private oauth: OauthCordova = new OauthCordova();
+  private facebookProvider: Facebook = new Facebook({
+    clientId: "888814501321925",
+    appScope: ["email"]
+  })
+  successResOne: Object = {
+    'access_token': 'pending'
+  };
+
+  successResTwo: Object = {
+    'status': 'pending'
+  };
+
+
+
   constructor(public navCtrl: NavController,
     public user: User,
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    private platform: Platform,
+    private http: HttpClient
   ) {
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
@@ -87,7 +110,57 @@ export class LoginPage {
   }
 
   forgotPassword() {
-    alert('Not Implimented!');
+    this.navCtrl.push('ForgotPasswordPage').then(() => {
+      console.log('Forgot password')
+    });
+  }
+
+
+
+  public facebook() {
+    this.platform.ready().then(() => {
+      this.oauth.logInVia(this.facebookProvider, {
+        clearsessioncache: 'no',
+        toolbarposition: 'top'
+      }).then((success: any) => {
+        console.log("RESULT: " + JSON.stringify(success));
+        this.successResOne = success;
+        let loading = this.loadingCtrl.create({
+          content: 'Logging In...'
+        });
+        loading.present();
+
+        this.http.get("https://graph.facebook.com/v2.2/me", { params: { access_token: success.access_token, fields: "name,gender,location,picture", format: "json" } }).subscribe((res: any) => {
+          this.successResTwo = res;
+          this.user.fbLogin({
+            name: res.name,
+            fbid: res.id,
+          }).subscribe((resp: any) => {
+            if (resp.code === 1001) {
+              this.user.loggedIn(resp.user_details);
+              this.user.setTokens(resp.token, resp.refresh_token);
+              // this.parentPage && this.parentPage.refreshFromLogin();
+              this.navCtrl.pop();
+            } else {
+              let toast = this.toastCtrl.create({
+                message: resp.message,
+                duration: 3000,
+                position: 'top'
+              });
+              toast.present();
+            }
+          })
+          console.log(res);
+        }, (err) => {
+          alert('Error Loggin in to Facebook');
+          loading.dismiss();
+        });
+
+
+      }, error => {
+        console.log("ERROR: ", error);
+      });
+    });
   }
 
 }

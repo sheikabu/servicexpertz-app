@@ -28,6 +28,7 @@ export class ListServicePage {
     public api: Api
   ) {
     this.item = navParams.get('item');
+    console.log(this.item);
     this.services = this.item.services;
 
     this.userSerRef.logger().subscribe(res => {
