@@ -53,10 +53,10 @@
     padding: 0 2.5em;
 }
 .button-md-secondary, .button-ios-secondary{
-    background: linear-gradient(-95deg, #F1B02E, #41A7DA) fixed;
+    background: linear-gradient(-95deg, #F1B02E, #41A7DA) ;
 }
 .button-md-secondary:hover, .button-md-secondary:focus{
-    background: linear-gradient(-95deg, #41A7DA, #F1B02E) fixed;
+    background: linear-gradient(-95deg, #41A7DA, #F1B02E) ;
 }
 .button-outline{
     border-color: #ddd;

@@ -45,6 +45,9 @@
             box-shadow: none !important;
             margin-left: 0 !important;
         }
+        &.pin-code{
+            padding-left: 10px;
+        }
       }
       .date-picker{
           .icon{
@@ -137,4 +140,8 @@
   .time-slot .selection input[type=radio]:checked ~ label {
     background-color: #41A7DA;
     color: #fff;
+  }
+
+  .book-service-footer{
+      background-color: #f5f5f5;
   }

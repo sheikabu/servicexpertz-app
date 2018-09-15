@@ -27,7 +27,7 @@
 
 <ion-content class="landing-page">
 
-  <ion-card  *ngFor="let a of cats">
+  <!-- <ion-card  *ngFor="let a of cats">
 
   <ion-card-content>
       <button ion-item (click)="openItem(a)">
@@ -39,7 +39,8 @@
           <p>{{a.description}}</p>
         </button>
   </ion-card-content>
-</ion-card>
+
+</ion-card> -->
 
   <!-- <ion-list>
     <ion-item *ngFor="let a of cats">
@@ -52,4 +53,27 @@
       </button>
     </ion-item>
   </ion-list> -->
+
+
+
+  <div *ngFor="let a of cats" class="service-type-block">
+    <h2>{{a.category}}</h2>
+    <div class="h-scroll">
+      <div *ngFor="let b of a.subcategories" class="h-scroll-content">
+
+        <button ion-item (click)="openItem(b)" class="text-center">
+          <div class="type-image">
+            <img src="assets/img/queen-live.png" />
+            <img *ngIf="!a.sub_category_image" src="assets/img/menu-bg.jpg" />
+            <img *ngIf="b.sub_category_image" src="{{this.baseUrl}}{{b.sub_category_image}}" />
+          </div>
+          <h2>{{b.sub_category}}</h2>
+          <!-- <p>{{a.description}}</p> -->
+        </button>
+      </div>
+      
+    </div>
+  </div>
+
+
 </ion-content>

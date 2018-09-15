@@ -5,7 +5,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="landing-page">
+<ion-content class="card-background-page">
 
   <ion-card  *ngFor="let a of services">
 
@@ -20,6 +20,16 @@
         </button>
   </ion-card-content>
 
+</ion-card>
+
+<ion-card  *ngFor="let a of services">
+    <ion-card-content  style="background-image:url(assets/img/queen-live.png)">
+  <!-- <img src="assets/img/queen-live.png"/> -->
+  <div class="service-foot">
+  <div class="card-title">{{a.services}}</div> 
+  <button ion-button color="secondary" (click)="bookItem(a)" class="">Book</button>
+</div>
+</ion-card-content>
 </ion-card>
 
   <!-- <ion-list>
