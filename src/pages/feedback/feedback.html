@@ -5,65 +5,67 @@
   Ionic pages and navigation.
 -->
 <ion-header class="feedback-header">
-<!-- 
-  <ion-navbar>
-    <ion-title></ion-title>
-  </ion-navbar> -->
-  <br>
-  <div class="feedback-header-text text-center">
-      <ion-icon name="help-buoy"></ion-icon>
-    <h2>Get In Touch!</h2>
-    <p>Always within your reach</p>
-  </div>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title></ion-title>
+    </ion-navbar>
+    <br>
+    <div class="feedback-header-text text-center">
+        <ion-icon name="help-buoy"></ion-icon>
+        <h2>Get In Touch!</h2>
+        <p>Always within your reach</p>
+    </div>
 
 </ion-header>
 
 
 <ion-content padding class="feedback-content">
 
-    <form >
+
+    <form [formGroup]="theForm">
         <ion-row>
             <ion-col>
                 <div class="form-group">
-                <label>Name</label>
-                <ion-item>
-                    <ion-input type="text" placeholder="Enter Name" name="name"></ion-input>
-                  
-                </ion-item>
-              </div>
+                    <label>Name</label>
+                    <ion-item>
+                        <ion-input formControlName="name" type="text" placeholder="Enter Name" name="name"></ion-input>
 
-              <div class="form-group mt-15">
-                  <label>Email</label>
-                  <ion-item>
-                      <ion-input type="text" placeholder="Enter Email" name="email"></ion-input>
-                    
-                  </ion-item>
+                    </ion-item>
                 </div>
 
                 <div class="form-group mt-15">
-                    <label>Phone Number</label>
+                    <label>Email</label>
                     <ion-item>
-                        <ion-input type="text" placeholder="Enter Phone Number" name="phone"></ion-input>
-                      
-                    </ion-item>
-                  </div>
-                
-                  <div class="form-group mt-15">
-                  <label>Message</label>
-                <ion-item>
-                    
-                    <ion-textarea placeholder="Enter Message"  name="message" class="message"></ion-textarea>
-                </ion-item>
-                </div>
-                
-            </ion-col>
-          </ion-row>
-      </form>
+                        <ion-input formControlName="email" type="text" placeholder="Enter Email" name="email"></ion-input>
 
+                    </ion-item>
+                </div>
+
+                <!-- <div class="form-group mt-15">
+                    <label>Subject</label>
+                    <ion-item>
+                        <ion-input formControlName="subject" type="text" placeholder="Enter Subject" name="phone"></ion-input>
+
+                    </ion-item>
+                </div> -->
+
+                <div class="form-group mt-15">
+                    <label>Message</label>
+                    <ion-item>
+
+                        <ion-textarea formControlName="comments" placeholder="Enter Message" name="message" class="message"></ion-textarea>
+                    </ion-item>
+                </div>
+
+            </ion-col>
+        </ion-row>
+    </form>
 </ion-content>
 <ion-footer>
     <ion-toolbar padding>
-  
-      <button ion-button color="secondary" block (click)="bookNow()" class="">Contact Now</button>
+
+        <button ion-button color="secondary" block (click)="send()" class="">Send</button>
     </ion-toolbar>
-  </ion-footer>
+</ion-footer>

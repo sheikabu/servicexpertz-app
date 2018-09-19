@@ -63,8 +63,7 @@
 
         <button ion-item (click)="openItem(b)" class="text-center">
           <div class="type-image">
-            <img src="assets/img/queen-live.png" />
-            <img *ngIf="!a.sub_category_image" src="assets/img/menu-bg.jpg" />
+            <img *ngIf="!b.sub_category_image" src="assets/img/menu-bg.jpg" />
             <img *ngIf="b.sub_category_image" src="{{this.baseUrl}}{{b.sub_category_image}}" />
           </div>
           <h2>{{b.sub_category}}</h2>

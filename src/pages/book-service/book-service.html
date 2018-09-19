@@ -37,12 +37,22 @@
     </ion-item>
 
 
-    <ion-item class="input-box mt-10">
+    <!-- <ion-item class="input-box mt-10">
       <ion-label>Select City</ion-label>
       <ion-select formControlName="city_id">
         <ion-option *ngFor="let a of cities;let i =index;" [value]="a.city_id">{{a.city_name}}</ion-option>
       </ion-select>
+      
+    </ion-item> -->
+
+
+    <ion-item class="input-box mt-10">
+      <ion-label>Select City</ion-label>
+      <ionic-selectable item-content formControlName="city_id" [items]="cities" itemValueField="city_id" itemTextField="city_name"
+        [canSearch]="true" (onChange)="cityChange($event)">
+      </ionic-selectable>
     </ion-item>
+
 
 
 
@@ -69,12 +79,12 @@
     <label class="slot-selector-label mt-15">Choose Slot</label>
     <ion-row class="time-slot">
       <ion-col *ngFor="let a of slots;let i =index;" col-4>
-          <div class="selection">
-              <input formControlName="slot_id" [value]="a.ts_id" id="slot{{i}}" type="radio">
-              <label for="slot{{i}}">{{a.ts_name}}</label>
-            </div>
+        <div class="selection">
+          <input formControlName="slot_id" [value]="a.ts_id" id="slot{{i}}" type="radio">
+          <label for="slot{{i}}">{{a.ts_name}}</label>
+        </div>
       </ion-col>
-      
+
     </ion-row>
 
 

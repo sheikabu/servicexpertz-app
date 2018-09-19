@@ -59,11 +59,11 @@ export class BookServicePage {
         this.theForm.patchValue({
           slot_id: null
         });
-        this.slots = this.actualSlots.filter((s)=>{
+        this.slots = this.actualSlots.filter((s) => {
           return +s.till_time > d.getHours()
         })
       } else {
-        this.slots = this.actualSlots.filter((s)=>{
+        this.slots = this.actualSlots.filter((s) => {
           return true;
         })
       }
@@ -178,7 +178,9 @@ export class BookServicePage {
       content: 'Booking...'
     });
     loading.present();
-    this.itemSerRef.bookService(this.theForm.value).subscribe((res: any) => {
+    const payload = this.theForm.value;
+    payload.city_id = payload.city_id.city_id;
+    this.itemSerRef.bookService(payload).subscribe((res: any) => {
       loading.dismiss();
       if (res && res.code === 1001) {
         let formData = this.theForm.value;
@@ -228,6 +230,10 @@ export class BookServicePage {
     return [year, month, day].join('-');
   }
 
+
+  cityChange(event) {
+    console.log('city:', event.value);
+  }
 
 
 }

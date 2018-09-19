@@ -8,11 +8,13 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { SelectSearchableModule } from 'ionic-select-searchable';
 
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 import { Items } from '../providers/items/items';
 import { InterceptorModule } from '../providers/api/interceptor.module';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -51,7 +53,9 @@ export function provideSettings(storage: Storage) {
       }
     }),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    SelectSearchableModule,
+    IonicSelectableModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -82,7 +82,9 @@ export class LoginPage {
         this.user.loggedIn(resp.user_details);
         this.user.setTokens(resp.token, resp.refresh_token);
         // this.parentPage && this.parentPage.refreshFromLogin();
-        this.navCtrl.pop();
+        setTimeout(() => {
+          this.navCtrl.pop();
+        }, 500);
       } else {
         let toast = this.toastCtrl.create({
           message: resp.message,
