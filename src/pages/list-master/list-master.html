@@ -58,7 +58,7 @@
 
   <div *ngFor="let a of cats" class="service-type-block">
     <h2>{{a.category}}</h2>
-    <div class="h-scroll">
+    <div id="step1" class="h-scroll">
       <div *ngFor="let b of a.subcategories" class="h-scroll-content">
 
         <button ion-item (click)="openItem(b)" class="text-center">

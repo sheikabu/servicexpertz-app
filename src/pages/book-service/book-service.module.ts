@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { BookServicePage } from './book-service';
-import { SelectSearchableModule } from 'ionic-select-searchable';
 import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
@@ -10,7 +9,6 @@ import { IonicSelectableModule } from 'ionic-selectable';
   ],
   imports: [
     IonicPageModule.forChild(BookServicePage),
-    SelectSearchableModule,
     IonicSelectableModule
   ],
   
