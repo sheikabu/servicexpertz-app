@@ -6,8 +6,11 @@ import { Injectable } from '@angular/core';
  */
 @Injectable()
 export class Api {
-  url: string = 'http://sptx.dieselgeneratorkerala.com/index.php/api';
-  domain: string = 'http://sptx.dieselgeneratorkerala.com/';
+  // url: string = 'http://sptx.dieselgeneratorkerala.com/index.php/api';
+  // domain: string = 'http://sptx.dieselgeneratorkerala.com/';
+
+  url: string = 'http://app.servicexpertz.com/index.php/api';
+  domain: string = 'http://app.servicexpertz.com/';
 
   constructor(public http: HttpClient) {
   }
