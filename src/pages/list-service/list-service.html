@@ -7,20 +7,6 @@
 
 <ion-content class="card-background-page">
 
-  <!-- <ion-card  *ngFor="let a of services">
-
-  <ion-card-content>
-      <button ion-item (click)="bookItem(a)">
-          <ion-avatar item-start>
-            <img *ngIf="!a.image" src="assets/img/menu-bg.jpg" />
-            <img *ngIf="a.image" src="{{baseUrl}}{{a.image}}" />
-          </ion-avatar>
-          <h2>{{a.services}}</h2>
-          <p>{{a.description}}</p>
-        </button>
-  </ion-card-content>
-
-</ion-card> -->
 
   <ion-card *ngFor="let a of services">
     <ion-card-content [ngStyle]="{'background-image': a.image ? 'url('+baseUrl+a.image+')' : 'url(assets/img/queen-live.png)' }">
@@ -31,15 +17,8 @@
     </ion-card-content>
   </ion-card>
 
-  <!-- <ion-list>
-    <ion-item *ngFor="let a of cats">
-      <button ion-item (click)="openItem(a)">
-        <ion-avatar item-start>
-          <img src="assets/img/queen-live.png" />
-        </ion-avatar>
-        <h2>{{a.category_name}}</h2>
-        <p>{{a.description}}</p>
-      </button>
-    </ion-item>
-  </ion-list> -->
+  <div style="padding: 12px;color: #c70909;text-align: center;font-size: 1.2em;margin-top: 68px;" *ngIf="!services || !services.length">
+    No services found!
+  </div>
+
 </ion-content>

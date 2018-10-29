@@ -31,8 +31,14 @@ export class ListMasterPage {
       this.user = user;
     });
     this.baseUrl = this.api.domain;
-    console.log(this.baseUrl,'ssss');
+    console.log(this.baseUrl, 'ssss');
+    this.intro();
   }
+
+  intro() {
+    
+  }
+
 
   /**
    * The view loaded, let's query our items for the list

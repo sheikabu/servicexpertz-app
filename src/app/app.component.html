@@ -22,6 +22,10 @@
             <button *ngIf="user" menuClose ion-item (click)="openPage('HistoryPage')">
                 <ion-icon name="timer"></ion-icon> <label class="menu-label">History</label>
             </button>
+
+            <button menuClose ion-item (click)="openPage('FeedbackPage')">
+                <ion-icon ios="ios-paper" md="md-paper"></ion-icon> <label class="menu-label">Feedback</label>
+            </button>
             <button menuClose ion-item (click)="openPage('ContactPage')">
                     <ion-icon ios="ios-thumbs-up" md="md-thumbs-up"></ion-icon> <label class="menu-label">Contact Us</label>
             </button>

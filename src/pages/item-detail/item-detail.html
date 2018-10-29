@@ -10,7 +10,7 @@
 <ion-content class="item-details-page" padding>
   <ion-row>
     <ion-col class="book-image-col">
-      <div class="book-image">
+      <div class="book-image" [ngStyle]="{'background-image': item.image ? 'url('+baseUrl+item.image+')' : 'url(assets/img/queen-live.png)' }">
 
       </div>
     </ion-col>
@@ -21,7 +21,7 @@
         <h2 class="service-head">{{item.services}}</h2>
 
         <div class="book-price">
-          <span>₹​</span> {{item.price}} <span class="unit">/ hr</span>
+          <span>₹​</span> {{item.price}} <span class="unit"></span>
         </div>
 
         <div *ngIf="item.additonal_cost && item.parameter" class="additional-price">
@@ -32,15 +32,7 @@
 
 
         <p class="service-desc mt-20">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-          industry's standard dummy
-          text ever since the 1500.. when an unknown printer took a galley of type and scrambled it to make a type
-          specimen
-          book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-          essentially
-          unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-          passages,
-          and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+          {{item.description}}
         </p>
 
         <!-- <ion-item no-lines no-padding class="custom-checkbox">

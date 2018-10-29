@@ -25,6 +25,11 @@ export class Items {
   }
 
 
+  feedback(payload) {
+    return this.api.post(`feedback`, payload);
+  }
+
+
   getSlots() {
     return this.api.get(`booking/slot_list`);
   }

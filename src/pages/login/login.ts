@@ -40,6 +40,7 @@ export class LoginPage {
   successResTwo: Object = {
     'status': 'pending'
   };
+  fbstatus: any = {'a':'starting...'};
 
 
 
@@ -82,7 +83,9 @@ export class LoginPage {
         this.user.loggedIn(resp.user_details);
         this.user.setTokens(resp.token, resp.refresh_token);
         // this.parentPage && this.parentPage.refreshFromLogin();
-        this.navCtrl.pop();
+        setTimeout(() => {
+          this.navCtrl.pop();
+        }, 500);
       } else {
         let toast = this.toastCtrl.create({
           message: resp.message,
@@ -119,10 +122,18 @@ export class LoginPage {
 
   public facebook() {
     this.platform.ready().then(() => {
+      console.log('logging...');
+      this.fbstatus = {
+        'a': 'logging'
+      }
       this.oauth.logInVia(this.facebookProvider, {
         clearsessioncache: 'no',
         toolbarposition: 'top'
       }).then((success: any) => {
+        this.fbstatus = {
+          'a': 'via',
+          'b': success
+        }
         console.log("RESULT: " + JSON.stringify(success));
         this.successResOne = success;
         let loading = this.loadingCtrl.create({
@@ -159,6 +170,11 @@ export class LoginPage {
 
       }, error => {
         console.log("ERROR: ", error);
+        alert(error);
+        this.fbstatus = {
+          'a': 'error',
+          'b': error
+        }
       });
     });
   }

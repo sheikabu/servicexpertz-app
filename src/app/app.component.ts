@@ -79,7 +79,12 @@ export class MyApp {
     this.userSerRef.logger().subscribe((user) => {
       this.user = user;
       console.log('User changed', this.user);
-      
+    });
+
+    this.userSerRef.redirector().subscribe((to) => {
+      if(to && this.nav) {
+        this.nav.setRoot(to);
+      }
     });
   }
 

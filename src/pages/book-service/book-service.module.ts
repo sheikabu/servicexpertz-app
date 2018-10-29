@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { BookServicePage } from './book-service';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,8 @@ import { BookServicePage } from './book-service';
   ],
   imports: [
     IonicPageModule.forChild(BookServicePage),
+    IonicSelectableModule
   ],
+  
 })
 export class BookServicePageModule {}
