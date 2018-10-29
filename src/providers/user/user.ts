@@ -8,6 +8,8 @@ import { Observable } from 'rxjs/Observable';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/toPromise';
+import { HttpClient } from '@angular/common/http';
+import { NavController } from 'ionic-angular';
 
 /**
  * Most apps have the concept of a User. This is a simple provider
@@ -32,8 +34,12 @@ import 'rxjs/add/operator/toPromise';
 export class User {
 
   private loggerSubject: BehaviorSubject<any> = new BehaviorSubject<any>(false);
+  private redirectorSubject: BehaviorSubject<any> = new BehaviorSubject<any>(false);
 
-  constructor(public api: Api, public storage: Storage) {
+  constructor(
+    public api: Api,
+    public storage: Storage
+  ) {
     this.storage.get('userDetails').then((resp) => {
       this.loggerSubject.next(JSON.parse(resp));
     })
@@ -106,11 +112,10 @@ export class User {
   }
 
   expiredLogOut() {
-    this.storage.set('userDetails', false);
-    this.storage.set('t', null);
-    this.storage.set('r', null);
-    this.loggerSubject.next(false);
-    window.location.reload();
+    this.logout();
+    this.redirectorSubject.next('ListMasterPage');
+
+    // window.location.reload();
   }
 
   loggedIn(resp) {
@@ -155,7 +160,10 @@ export class User {
 
   logger() {
     return this.loggerSubject.asObservable();
-    // return this.storage.get('userDetails');
+  }
+
+  redirector() {
+    return this.redirectorSubject.asObservable();
   }
 
 
@@ -164,6 +172,25 @@ export class User {
     formData.append('user_image', fileToUpload);
 
     return this.api.post(`user/image_upload?id=${id}`, formData);
+  }
+
+  refreshAccessToken() {
+    return this.getRTokenAsObservable().switchMap((data: any) => {
+      if (data) {
+
+        return this.api.get('refresh').subscribe((res: any) => {
+          console.log(res);
+          const headers = new Headers();
+          headers.append('Content-Type', 'application/json');
+          headers.append('Authorization', `Bearer ${data}`);
+
+          this.setTokens(res.token, res.refresh_token);
+          return Observable.of(res.refresh_token);
+        })
+      }
+      // return Observable.of(data);
+      return data
+    })
   }
 
 

@@ -13,6 +13,7 @@ import { MainPage } from '../';
 export class RegisterPage {
   account: any = {
     name: '',
+    phone: '',
     email: '',
     password: '',
     confpass: '',
@@ -35,7 +36,7 @@ export class RegisterPage {
 
 
     let payload = this.account;
-    if (!payload.name || !payload.email || !payload.password) {
+    if (!payload.name || !payload.email || !payload.phone || !payload.password) {
       let toast = this.toastCtrl.create({
         message: 'Please fill all the fields!',
         duration: 3000,
@@ -45,7 +46,7 @@ export class RegisterPage {
       return false;
     }
 
-    if (payload.password !== payload.confpass ) {
+    if (payload.password !== payload.confpass) {
       let toast = this.toastCtrl.create({
         message: 'Passwords doesnot match!',
         duration: 3000,
